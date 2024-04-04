@@ -158,6 +158,10 @@ body,
   @apply bg-gradient-to-t to-yellow-300 via-teal-200 from-purple-400 bg-clip-text text-transparent;
 }
 
+.true_rainbow_gradient {
+  @apply bg-gradient-to-b from-red-600 via-green-400 to-purple-400 bg-clip-text text-transparent;
+}
+
 
 .desc {
   @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
