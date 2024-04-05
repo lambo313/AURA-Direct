@@ -1,7 +1,10 @@
 // Assuming this file is located at /pages/api/saveReading.ts in your Next.js project
-
+import { auth } from "@clerk/nextjs";
 import TarotReading, { ITarotReadingDocument } from "@/models/tarotReading";
 import { connectToDB } from '@/lib/mongodb';
+import { NextRequest } from "next/server";
+
+import { headers } from 'next/headers'
 
 // Define a handler function that adheres to Next.js API routes patterns
 export const POST = async (  req: Request, res: Response) => {
@@ -30,13 +33,16 @@ export const POST = async (  req: Request, res: Response) => {
   }
 }
 
-export const GET = async (request: any) => {
+
+export const GET = async (request: NextRequest) => {
   try {
       // Connect to the database
       await connectToDB();
+
+      const { userId } = await auth();
       
       // Fetch tarot card data from the database
-      const savedReadingsData = await TarotReading.find().exec();
+      const savedReadingsData = await TarotReading.find({ userId: userId }).exec();
 
       // Return the fetched data as a response
       return new Response(JSON.stringify(savedReadingsData), { status: 200 });

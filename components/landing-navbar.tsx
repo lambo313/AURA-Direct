@@ -24,6 +24,7 @@ export const LandingNavbar = () => {
                     fill
                     alt="Logo"
                     src="/logo.png"
+                    priority
                 />
             </div>
             <div className="flex flex-col">

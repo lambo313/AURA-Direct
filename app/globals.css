@@ -150,7 +150,7 @@ body,
 
 /* First part of the rainbow gradient, from red to yellow */
 .rainbow_gradient_1 {
-  @apply bg-gradient-to-b from-red-400 via-orange-300 to-green-400 bg-clip-text text-transparent;
+  @apply bg-gradient-to-b from-red-400 via-amber-300 to-green-300 bg-clip-text text-transparent;
 }
 
 /* Second part of the rainbow gradient, from green to purple */

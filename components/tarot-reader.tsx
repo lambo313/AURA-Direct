@@ -18,12 +18,19 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal }) => {
     const [clickCount, setClickCount] = useState(0);
     const clickCountRef = useRef(0);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
-    const [startTimerFlag, setStartTimerFlag] = useState(false); // State to control starting/stopping timer
+    const [startTimerFlag, setStartTimerFlag] = useState(false);
+    const [deckMoumnted, setDeckMoumnted] = useState(false); 
 
 
     useEffect(() => {
         setDeck([...tarotDeck]); // Update the deck state with tarotDeck when it changes
     }, [tarotDeck]);
+
+    // useEffect(() => {
+    //     setDeckMoumnted(true) // Update the deck state with tarotDeck when it changes
+    //     handleShuffle()
+    // }, []);
+
 
     // Start the timer when the component mounts
     // useEffect(() => {
@@ -52,8 +59,8 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal }) => {
         console.log("Deck length:", deck.length);
         console.log("Selected cards length:", selectedCards.length);
         if (deck.length > 0 && selectedCards.length < 4) {
-            console.log("Dealt Cards Pile: ", deck);
-            console.log("dealing!!!");
+            // console.log("Dealt Cards Pile: ", deck);
+            // console.log("dealing!!!");
 
             // Deal one card from the deck using dealCards function
             const { dealtCard, remainingDeck } = dealCards(deck, 1);
@@ -61,25 +68,27 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal }) => {
             setDeck(remainingDeck); // Update the deck state with the remaining cards
             setSelectedCards([...selectedCards, ...dealtCard]); // Add the dealt card to the selected cards
             onDeal([...selectedCards, ...dealtCard]); // Call the onDeal callback function with the dealt card
-            console.log("Dealt Card: ", dealtCard);
-            console.log("Previous Cards Dealt: ", selectedCards);
+            // console.log("Dealt Card: ", dealtCard);
+            // console.log("Previous Cards Dealt: ", selectedCards);
         } else if (deck.length === 0) {
-            console.log("No Cards Left in the Deck!");
+            // console.log("No Cards Left in the Deck!");
+            toast.error("No Cards Left in the Deck!");
         }else {
-            console.log("Max Cards Dealt!");
+            // console.log("Max Cards Dealt!");
+            toast.error("Max Cards Dealt!");
         }
     };
 
     const handleShuffle = () => {
-        console.log("Preshuffled Cards: ", deck);
-        console.log("shuffling!!!");
+        // console.log("Preshuffled Cards: ", deck);
+        // console.log("shuffling!!!");
 
         clickCountRef.current += 1;
         setClickCount(clickCountRef.current);
 
         const shuffledDeck = shuffleDeck([...deck]); // Shuffle the current deck state
         setDeck(shuffledDeck); // Update the deck state
-        console.log("Shuffled Cards!!!: ", shuffledDeck);
+        // console.log("Shuffled Cards!!!: ", shuffledDeck);
         toast.success("Deck Shuffled!");
     };
 
@@ -95,10 +104,11 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal }) => {
 
 
     return (
-        <div className="glassmorphism flex flex-col items-center mb-2">
-            <button onClick={handleShuffle} className="bg-blue-500 text-white px-4 py-2 rounded mb-4">Shuffle Deck</button>
-            <button onClick={handleDeal} className="bg-green-500 text-white px-4 py-2 rounded">Deal Cards</button>
+        <div className="glassmorphism grid grid-cols-2 gap-8">
+            <button onClick={handleShuffle} disabled={!deckMoumnted} className="bg-blue-500 text-white px-4 py-2 rounded flex justify-center">Shuffle Deck</button>
+            <button onClick={handleDeal} className="bg-green-500 text-white px-4 py-2 rounded flex justify-center">Deal Cards</button>
         </div>
+
     );
 };
 

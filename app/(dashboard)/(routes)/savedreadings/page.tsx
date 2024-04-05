@@ -1,7 +1,7 @@
 "use client"
 
 import { Heading } from "@/components/heading";
-import { ImageIcon } from "lucide-react";
+import { FileStack } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card } from "@/components/ui/card";
@@ -33,9 +33,16 @@ const SavedReadingsPage = () => {
     const fetchSavedReadings = async () => {
       try {
         // Fetch saved readings data from the server
-        // const data = await TarotReading.find({ userId });
-        const response = await fetch('/api/saveReading');
+        const response = await fetch('/api/saveReading', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // Assuming your API expects a custom header like 'X-User-Id' for the user ID
+            'Authorization': userId,
+          },
+        });
         let data = await response.json();
+        console.log("DATA: ", data)
         data = data.reverse();
         setSavedReadings(data);
       } catch (error) {
@@ -55,7 +62,7 @@ const SavedReadingsPage = () => {
       <Heading
         title="Saved Readings"
         description="View your saved tarot readings."
-        icon={ImageIcon}
+        icon={FileStack}
         iconColor="text-pink-700"
         bgColor="bg-pink-700/10"
       />

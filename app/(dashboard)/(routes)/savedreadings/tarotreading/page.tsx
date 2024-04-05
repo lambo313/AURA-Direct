@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation'
 import { Heading } from "@/components/heading";
-import { MessageSquare } from "lucide-react";
+import { File } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
@@ -104,10 +104,10 @@ const TarotReadingPage = () => {
     <div className="pb-4">
       <Heading
         title="Tarot Reading"
-        description="Generate AI tarot readings."
-        icon={MessageSquare}
-        iconColor="text-green-700"
-        bgColor="bg-green-700/10"
+        description="Your AI generated reading."
+        icon={File}
+        iconColor="text-amber-700"
+        bgColor="bg-amber-700/10"
       />
       <div className="px-4 lg:px-8">
         <div key={reading.id}>

@@ -59,10 +59,10 @@ const TarotDeck = () => {
     return tarotCards.filter(
       (tarotCard: any) =>
         regex.test(tarotCard.title) ||
-        regex.test(tarotCard.divinatoryMeaning) ||
-        regex.test(tarotCard.uprightEffect) ||
-        regex.test(tarotCard.reversedEffect) ||
-        regex.test(tarotCard.cardDescription)
+        regex.test(tarotCard.divinatoryMeaning)
+        // regex.test(tarotCard.uprightEffect) ||
+        // regex.test(tarotCard.reversedEffect) ||
+        // regex.test(tarotCard.cardDescription)
       // Add more filters as needed
     );
   };

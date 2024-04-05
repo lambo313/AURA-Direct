@@ -6,7 +6,7 @@ import axios from "axios";
 import * as z from "zod";
 
 import { Heading } from "@/components/heading"
-import { Code } from "lucide-react"
+import { View } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
@@ -157,7 +157,7 @@ const TarotReaderPage = () => {
         <Heading
           title="Tarot Reader"
           description="Generate AI tarot readings."
-          icon={Code}
+          icon={View}
           iconColor="text-green-700"
           bgColor="bg-green-700/10"
         />
@@ -208,7 +208,16 @@ const TarotReaderPage = () => {
                 />
                 <Button 
                 className="col-span-12 lg:col-span-2 w-full" 
-                disabled={isLoading || isGenerated}>
+                disabled={isLoading || isGenerated}
+                onClick={() => {
+                  if (dealtCards.length < 4) {
+                      toast.error("Not enough cards dealt");
+                      return;
+                  }
+                  // Add your onClick handler logic here
+                  
+                }}
+                >
                   Generate
                 </Button>
               </form>

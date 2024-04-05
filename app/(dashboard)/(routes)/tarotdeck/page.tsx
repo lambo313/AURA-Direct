@@ -6,7 +6,7 @@ import axios from "axios";
 import * as z from "zod";
 
 import { Heading } from "@/components/heading"
-import { MessageSquare } from "lucide-react"
+import { Layers } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
@@ -72,7 +72,7 @@ const TarotDeckPage = () => {
         <Heading
           title="Tarot Deck"
           description="Our most advanced tarot model."
-          icon={MessageSquare}
+          icon={Layers}
           iconColor="text-violet-500"
           bgColor="bg-violet-500/10"
         />
