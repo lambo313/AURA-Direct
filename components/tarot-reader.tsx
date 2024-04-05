@@ -105,7 +105,12 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal }) => {
 
     return (
         <div className="glassmorphism grid grid-cols-2 gap-8">
-            <button onClick={handleShuffle} disabled={!deckMoumnted} className="bg-blue-500 text-white px-4 py-2 rounded flex justify-center">Shuffle Deck</button>
+            <button 
+            onClick={handleShuffle} 
+            // disabled={!deckMoumnted} 
+            className="bg-blue-500 text-white px-4 py-2 rounded flex justify-center"
+            >Shuffle Deck
+            </button>
             <button onClick={handleDeal} className="bg-green-500 text-white px-4 py-2 rounded flex justify-center">Deal Cards</button>
         </div>
 
