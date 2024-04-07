@@ -33,14 +33,7 @@ const SavedReadingsPage = () => {
     const fetchSavedReadings = async () => {
       try {
         // Fetch saved readings data from the server
-        const response = await fetch('/api/saveReading', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            // Assuming your API expects a custom header like 'X-User-Id' for the user ID
-            'Authorization': userId,
-          },
-        });
+        const response = await fetch('/api/saveReading');
         let data = await response.json();
         console.log("DATA: ", data)
         data = data.reverse();
@@ -57,8 +50,18 @@ const SavedReadingsPage = () => {
     router.push(`/savedreadings/tarotreading/?id=${id}`);
   };
 
+  function getReadingTopic(responseContent: string): string {
+    const splitResponse = (responseContent || '').split('-').map((part: string) => part.trim());
+    return splitResponse[0] || ''; // Assuming the topic is the second part after splitting
+  }
+
+  function getDealtCardsStrig(responseContent: string): string {
+    const splitResponse = (responseContent || '').split('-').map((part: string) => part.trim());
+    return splitResponse[1] || ''; // Assuming the topic is the second part after splitting
+  }
+
   return (
-    <div>  
+    <div className="pb-20">  
       <Heading
         title="Saved Readings"
         description="View your saved tarot readings."
@@ -73,10 +76,17 @@ const SavedReadingsPage = () => {
             key={reading._id}
             className="p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer"
           >
+            <div className="flex flex-col">
             <div className="flex items-center gap-x-4">
               {/* Render reading icon or any other relevant content */}
-              <div className="font-semibold">{reading.question}</div>
+              <div className="font-semibold"> {getReadingTopic(reading.response[0]?.content || '')}</div>
+              <span>
+                {"•"}
+              </span>
               <div className="font-light">{new Date(reading.readingDate).toLocaleString()}</div>
+            </div>
+            <div className="font-light">{getDealtCardsStrig(reading.response[0]?.content || '')}</div>
+
             </div>
             <FaArrowRight className="w-5 h-5" />
           </Card>
@@ -86,4 +96,6 @@ const SavedReadingsPage = () => {
   );
 };
 
-export default SavedReadingsPage;
+export default SavedReadingsPage
+
+

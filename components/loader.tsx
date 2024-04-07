@@ -8,6 +8,7 @@ export const Loader = () => {
           alt="logo"
           fill
           src="/logo.png"
+          sizes="small"
         />
       </div>
       <p className="text-sm text-muted-foreground">

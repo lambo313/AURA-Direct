@@ -25,13 +25,14 @@ export const LandingNavbar = () => {
                     alt="Logo"
                     src="/logo.png"
                     priority
+                    sizes="small"
                 />
             </div>
             <div className="flex flex-col">
-                <h1 className={cn("text-2xl font-bold rainbow_gradient_1 text-center -mb-2", font.className)}>
+                <h1 className={cn("text-2xl font-bold golden_gradient text-center -mb-2", font.className)}>
                     AURA
                 </h1>
-                <h2 className={cn("text-xs font-bold rainbow_gradient_2 text-center", font.className)}>
+                <h2 className={cn("text-xs font-bold golden_gradient text-center", font.className)}>
                     Direct
                 </h2>
             </div>

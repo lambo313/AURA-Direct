@@ -64,6 +64,7 @@ const TarotCard = ({ tarotCard, handleTagClick, handleEdit, handleDelete}: Tarot
                     // objectFit="cover"
                     width="345"
                     height={100}
+                    priority
                   />
                 </div>
                 <div className="glassmorphism">

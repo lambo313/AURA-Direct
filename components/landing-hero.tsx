@@ -13,7 +13,7 @@ export const LandingHero = () => {
         <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
             <h1>AI Tarot Tool</h1>
             {/* <h1>brought to you by</h1> */}
-            <div className="rainbow_gradient_1">
+            <div className="golden_gradient">
                 <TypeWriterComponent
                   options={({
                     strings:[

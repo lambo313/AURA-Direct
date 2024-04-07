@@ -50,8 +50,12 @@ const DashboardPage = () => {
       <div className="mb-8 space-y-4">
         {/* <div className="flex items-center justify-center"> */}
           <h2 className="text-2xl md:text-4xl font-bold text-center">
-          Explore the power of AURA
+          Explore the power of{' '}
+          <span className="golden_gradient">
+            AURA
+          </span>
           </h2>
+          
         {/* </div> */}
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
           Experience Imagination.

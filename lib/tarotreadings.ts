@@ -1,3 +1,5 @@
+// *************************** //
+
 "use server"
 
 // import { auth } from "@clerk/nextjs";
@@ -13,7 +15,6 @@ export const saveReading = async (readingData: ITarotReadingDocument) => {
       const requestBody = {
         userId: userId,
         cards: readingData.cards,
-        question: readingData.question,
         response: readingData.response,
         // readingDate: new Date().toISOString(), 
       };

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import * as z from "zod";
@@ -35,16 +35,31 @@ const TarotReaderPage = () => {
   const router = useRouter();
 
   const [dealtCards, setDealtCards] = useState<ITarotCard[]>([]);
+  const [selectedTopicValue, setSelectedTopicValue] = React.useState("");
+  const [selectedSpreadValue, setSelectedSpreadValue] = React.useState("");
 
   const [isGenerated, setIsGenerated] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
-
   const [messages, setMessages] = useState<OpenAI.Chat.ChatCompletionMessageParam[]>([])
+
+  const handleTopicChange = (value: string) => {
+    setSelectedTopicValue(value);
+};
+
+const handleSpreadChange = (value: string) => {
+  setSelectedSpreadValue(value);
+};
+
+useEffect(() => {
+  console.log("Selected Spread Value!: ", selectedSpreadValue)
+  console.log("Selected Topic Value!: ", selectedTopicValue)
+}, [selectedTopicValue, selectedSpreadValue])
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prompt: ""
+      prompt: "" 
     }
   });
 
@@ -77,17 +92,20 @@ const TarotReaderPage = () => {
     }
   };
 
+
+
   // Function to handle dealt cards change
     const handleDealtCardsChange = (cards: ITarotCard[]) => {
       setDealtCards(cards);
   };
 
+
   // Convert titles to a text string separated by commas
-  const dealtCardsString = dealtCards.map(card => card.title).join(', ');
+  const dealtCardsString: string = dealtCards.map(card => card.title).join(', ');
 
   useEffect(() => {
-    form.setValue('prompt', dealtCardsString);
-  }, [dealtCardsString, form]);
+    form.setValue('prompt', selectedTopicValue + " - " + dealtCardsString );
+  }, [dealtCardsString, selectedTopicValue, form]);
 
   const [userId, setUserId] = useState('');
 
@@ -122,7 +140,7 @@ const TarotReaderPage = () => {
       const newReading = {
         userId: userId,
         cards: dealtCards,
-        question: dealtCardsString,
+        spread: "",
         response: messages,
         readingDate: new Date()
       }
@@ -165,6 +183,8 @@ const TarotReaderPage = () => {
           <div className="h-full">
             <TarotReading
               onDealtCardsChange={handleDealtCardsChange}
+              onSpreadChange={handleSpreadChange}
+              onTopicChange={handleTopicChange}
             />
             {/* <div>
                 <h2>Dealt Cards:</h2>

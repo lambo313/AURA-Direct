@@ -95,13 +95,14 @@ const Sidebar = ({
               alt='Logo'
               src='/logo.png'
               priority
+              sizes="small"
             />
           </div>
           <div className="flex flex-col">
-            <h1 className={cn ("text-2xl font-bold rainbow_gradient_1 text-center -mb-2", montserrat.className)}>
+            <h1 className={cn ("text-2xl font-bold golden_gradient text-center -mb-2", montserrat.className)}>
               AURA
             </h1>
-            <h2 className={cn("text-xs font-bold rainbow_gradient_2 text-center", montserrat.className)}>
+            <h2 className={cn("text-xs font-bold golden_gradient text-center", montserrat.className)}>
               Direct
             </h2>
           </div>

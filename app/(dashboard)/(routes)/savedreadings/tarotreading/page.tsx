@@ -19,6 +19,7 @@ const TarotReadingPage = () => {
   const [cards, setCards] = useState<ITarotCard[]>([]);
   const [selectedCards, setSelectedCards] = useState<ITarotCard[]>([]);
   const [reading, setReading] = useState<ITarotReadingDocument>();
+  const [readingTopic, setReadingTopic] = useState<string>();
   const searchParams = useSearchParams();
   const id = searchParams.get('id')
   
@@ -70,8 +71,14 @@ const TarotReadingPage = () => {
             body: JSON.stringify({ cardIds: cardIds }),
           });
           const readingCardsIds = reading.cards.map(card => card._id);
-          const titlesArray = (reading.question || '').split(',');
+          
+          const responseString = reading.response[0]?.content || '';
+          const splitResponse = (responseString || '').split('-').map((part: string) => part.trim());;
+          const titlesArray = (splitResponse[1] || '').split(',');
+          const readingTopic = splitResponse[0];
           console.log("Titles Array: ", titlesArray)
+          console.log("Topic: ", readingTopic)
+          setReadingTopic(readingTopic)
 
           const cardDeck = await response.json();
 
@@ -111,7 +118,7 @@ const TarotReadingPage = () => {
       />
       <div className="px-4 lg:px-8">
         <div key={reading.id}>
-          <div className="font-semibold text-center">{reading.question}</div>
+          <div className="font-semibold text-center">{readingTopic}</div>
           <div className="font-light text-center">
             {new Date(reading.readingDate).toLocaleString()}
           </div>

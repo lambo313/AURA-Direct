@@ -4,8 +4,6 @@ import TarotReading, { ITarotReadingDocument } from "@/models/tarotReading";
 import { connectToDB } from '@/lib/mongodb';
 import { NextRequest } from "next/server";
 
-import { headers } from 'next/headers'
-
 // Define a handler function that adheres to Next.js API routes patterns
 export const POST = async (  req: Request, res: Response) => {
   if (req.method !== 'POST') {

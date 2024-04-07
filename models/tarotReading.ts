@@ -4,9 +4,10 @@ import { ITarotCard } from './TarotCards';
 export interface ITarotReadingDocument extends Document {
   userId: string; // Identifier linking the reading to a specific user
   cards: ITarotCard[]; // Array of cards drawn in the reading
-  question?: string; // Optional question or intention set by the user for the reading
-  response: [];
+  response: { role: string; content: any }[];
+  spread: string;
   readingDate: Date;
+
 }
 
 const TarotReadingSchema = new Schema<ITarotReadingDocument>({
@@ -17,12 +18,12 @@ const TarotReadingSchema = new Schema<ITarotReadingDocument>({
     type: Schema.Types.ObjectId, 
     ref: 'TarotCard' 
   }],
-  question: {
+  response: [{
+    role: String,
+    content: Schema.Types.Mixed, 
+  }],
+  spread: {
     type: String,
-    required: false, 
-  },
-  response: {
-    type: [],
   },
   readingDate: {
     type: Date
