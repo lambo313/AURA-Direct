@@ -1,9 +1,7 @@
 import React, { useState, useEffect, use } from 'react';
 import ReadingMat from './reading-mat';
 import TarotReader from './tarot-reader';
-import { ITarotCard } from "@/models/TarotCards";
-import { TopicsCombobox } from './topic-combo-box';
-import { SpreadCombobox } from './spread-combo-box';
+import { ITarotCard } from "@/models/TarotCards";;
 
 
 interface TarotReadingProps {
@@ -66,22 +64,13 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
 
     return (
         <div className=''>
-            <div 
-            className='glassmorphism w-max mx-auto flex flex-col gap-4' 
-            // style={{ display: 'flex', justifyContent: 'center' }}
-            >
-                <TopicsCombobox
-                    onSelect={handleTopicSelect}
-                />
-                <SpreadCombobox
-                    onSelect={handleSpreadSelect}
-                />
-            </div>
             <div>
                 <TarotReader
                     tarotDeck={tarotDeck}
                     onShuffle={handleShuffle}
                     onDeal={handleDeal}
+                    onTopicChange={handleTopicSelect}
+                    onSpreadChange={handleSpreadSelect}
                 />
             </div>
             <ReadingMat

@@ -183,8 +183,8 @@ useEffect(() => {
           <div className="h-full">
             <TarotReading
               onDealtCardsChange={handleDealtCardsChange}
-              onSpreadChange={handleSpreadChange}
               onTopicChange={handleTopicChange}
+              onSpreadChange={handleSpreadChange}
             />
             {/* <div>
                 <h2>Dealt Cards:</h2>

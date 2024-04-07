@@ -3,7 +3,7 @@
 import { useProModal } from "@/hooks/use-pro-modal"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog"
 import { Badge } from "./ui/badge";
-import { MessageSquare, Music, Image, Code, Video, Check, Zap } from "lucide-react";
+import { MessageSquare, Music, Image, Code, Video, Check, Zap, View, Layers, FileStack   } from "lucide-react";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
@@ -15,34 +15,39 @@ import { toast } from "react-hot-toast";
 const tools = [
   {
     label: "Tarot Deck",
-    icon: MessageSquare,
+    icon: Layers,
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
-  },
-  {
-    label: "Music Generation",
-    icon: Music,
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-  },
-  {
-    label: "Image Generation",
-    icon: Image,
-    color: "text-pink-700",
-    bgColor: "bg-pink-500/10",
-  },
-  {
-    label: "Video Generation",
-    icon: Video,
-    color: "text-orange-700",
-    bgColor: "bg-orange-700/10",
+    href: '/tarotdeck'
   },
   {
     label: "Tarot Reader",
-    icon: Code,
+    icon: View,
     color: "text-green-700",
     bgColor: "bg-green-500/10",
-  }
+    href: '/tarotreader'
+  },
+  {
+    label: "Saved Readings",
+    icon: FileStack,
+    color: "text-pink-700",
+    bgColor: "bg-pink-500/10",
+    href: '/savedreadings'
+  },
+  // {
+  //   label: "Music Generation",
+  //   icon: Music,
+  //   color: "text-emerald-500",
+  //   bgColor: "bg-emerald-500/10",
+  //   href: '/music'
+  // },
+  // {
+  //   label: "Video Generation",
+  //   icon: Video,
+  //   color: "text-orange-700",
+  //   bgColor: "bg-orange-700/10",
+  //   href: '/video'
+  // }
 ]
 
 export const ProModal = () => {

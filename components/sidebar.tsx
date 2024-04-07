@@ -89,7 +89,7 @@ const Sidebar = ({
     <div className="space-y-4 py-4 flex flex-col h-full glassmorphism text-white overflow-y-scroll hide-scrollbar">
       <div className="px-3 py-2 flex-1">
         <Link href='/dashboard' className="flex justify-center items-center mb-14">
-          <div className="relative h-14 w-14 mr-0.5">
+          <div className="relative h-14 w-14 mr-0.5 rounded-full shadow-custom-golden">
             <Image 
               fill
               alt='Logo'
