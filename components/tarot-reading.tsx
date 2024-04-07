@@ -67,7 +67,7 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
     return (
         <div className=''>
             <div 
-            className='glassmorphism w-max mx-auto flex gap-4' 
+            className='glassmorphism w-max mx-auto flex flex-col gap-4' 
             // style={{ display: 'flex', justifyContent: 'center' }}
             >
                 <TopicsCombobox
