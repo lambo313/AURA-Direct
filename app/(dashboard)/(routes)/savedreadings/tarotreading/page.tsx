@@ -108,7 +108,7 @@ const TarotReadingPage = () => {
   }
 
   return (
-    <div className="pb-4">
+    <div className="pb-20">
       <Heading
         title="Tarot Reading"
         description="Your AI generated reading."
