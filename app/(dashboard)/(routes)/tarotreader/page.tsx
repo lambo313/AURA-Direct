@@ -140,7 +140,7 @@ useEffect(() => {
       const newReading = {
         userId: userId,
         cards: dealtCards,
-        spread: "",
+        spread: selectedSpreadValue,
         response: messages,
         readingDate: new Date()
       }
@@ -228,7 +228,7 @@ useEffect(() => {
                 />
                 <Button 
                 className="col-span-12 lg:col-span-2 w-full" 
-                disabled={isLoading || isGenerated}
+                disabled={isLoading || isGenerated || dealtCards.length < 4}
                 onClick={() => {
                   if (dealtCards.length < 4) {
                       toast.error("Not enough cards dealt");

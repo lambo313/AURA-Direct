@@ -47,16 +47,13 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
         setDeck([...tarotDeck]); // Update the deck state with tarotDeck when it changes
     }, [tarotDeck]);
 
-    
-    // if (deck) {
-    //     setMount()
-    // }
+
 
     useEffect(() => {
-        if (deckMoumnted == true) {
+        if (selectedSpreadValue !== '') {
             handleShuffle()
         }
-    }, [deckMoumnted]);
+    }, [selectedSpreadValue]);
 
 
     const handleShuffle = () => {
@@ -71,11 +68,6 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
         // console.log("Shuffled Cards!!!: ", shuffledDeck);
         toast.success("Deck Shuffled!");
     };
-
-
-    if (deckMoumnted == true) {
-     handleShuffle()
-    }
 
 
     // Start the timer when the component mounts
@@ -105,6 +97,8 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
         if (selectedSpreadValue === "" || selectedTopicValue === "") {
             toast.error("Please select a topic and choose a spread!");
         } else {
+            const dealCard = () => {
+            console.log("Card Dealt"); // Replace this with the actual logic for dealing a card
             console.log("Deck length:", deck.length);
             console.log("Selected cards length:", selectedCards.length);
             if (deck.length > 0 && selectedCards.length < 4) {
@@ -127,6 +121,13 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
                 toast.error("Max Cards Dealt!");
             }
         }
+        dealCard();
+        // for (let i = 0; i < 4; i++) {
+        //     setTimeout(() => {
+              
+        //     }, 1000 * i);
+        //   }
+        };
     };
 
     
@@ -155,7 +156,6 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
         <div className="glassmorphism grid grid-cols-2 gap-8">
             <button 
             onClick={handleShuffle} 
-            // disabled={!deckMoumnted} 
             className="bg-blue-500 text-white px-4 py-2 rounded flex justify-center"
             >Shuffle Deck
             </button>

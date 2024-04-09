@@ -1,18 +1,31 @@
 "use client"
 
 import { Heading } from "@/components/heading";
-import { FileStack } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { FileStack, RefreshCcw } from "lucide-react";
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card } from "@/components/ui/card";
 import { FaArrowRight } from 'react-icons/fa'; // Import the ArrowRight icon
 import { ITarotReadingDocument } from "@/models/tarotReading";
+import { TopicsCombobox } from '@/components/topic-combo-box';
+import { SpreadCombobox } from '@/components/spread-combo-box';
 
 const SavedReadingsPage = () => {
   const router = useRouter();
   const [savedReadings, setSavedReadings] = useState<ITarotReadingDocument[]>([]);
 
   const [userId, setUserId] = useState('');
+
+  const [selectedTopicValue, setSelectedTopicValue] = React.useState("");
+    const [selectedSpreadValue, setSelectedSpreadValue] = React.useState("");
+
+  const handleTopicSelect = (value: string) => {
+    setSelectedTopicValue(value);
+  };
+
+  const handleSpreadSelect = (value: string) => {
+    setSelectedSpreadValue(value);
+  };
 
   useEffect(() => {
     async function fetchUserId() {
@@ -70,7 +83,41 @@ const SavedReadingsPage = () => {
         bgColor="bg-pink-700/10"
       />
       <div className="px-4 md:px-20 lg:px-32 space-y-4">
-        {savedReadings.map((reading) => (
+          <div 
+            className='glassmorphism w-max mx-auto flex flex-col gap-4 text-center' 
+            >
+              Filter
+              <div className="flex items-center">
+                  <TopicsCombobox
+                      onSelect={handleTopicSelect}
+                  />
+                  <button
+                      className="ml-2 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+                      onClick={() => (handleTopicSelect(""))}
+                  >
+                      <RefreshCcw className="w-4 h-4" />
+                  </button>
+              </div>
+              <div className="flex items-center">
+              <SpreadCombobox
+                    onSelect={handleSpreadSelect}
+                />
+                  <button
+                      className="ml-2 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+                      onClick={() => (handleSpreadSelect(""))}
+                  >
+                      <RefreshCcw className="w-4 h-4" />
+                  </button>
+              </div>
+          </div>
+          {savedReadings
+            .filter(reading =>
+              // Check for topic match (or no selection)
+              (selectedTopicValue === "" || getReadingTopic(reading.response[0]?.content || '') === selectedTopicValue) &&
+              // Check for spread match (or no selection)
+              (selectedSpreadValue === "" || reading.spread === selectedSpreadValue)
+            )
+            .map((reading) => (
           <Card
             onClick={() => handleReadingClick(reading._id)}
             key={reading._id}
