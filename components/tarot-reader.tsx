@@ -4,6 +4,8 @@ import  { ITarotCard } from "@/models/TarotCards";
 import { toast } from "react-hot-toast";
 import { TopicsCombobox } from './topic-combo-box';
 import { SpreadCombobox } from './spread-combo-box';
+import { TarotDeckCombobox } from './tarot-deck-combobox';
+import { Eye } from "lucide-react";
 
 interface Props {
     tarotDeck: ITarotCard[];
@@ -26,6 +28,35 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
     const [selectedSpreadValue, setSelectedSpreadValue] = React.useState("");
 
     const [deckMoumnted, setDeckMoumnted] = useState(false); 
+
+
+    const handleCardSelect = (value: string) => {
+        console.log("Card Selected!: ", value);
+        const selectedCard = deck.find(card => card.title === value);
+        if (selectedCard) {
+            dealSelectedCard(selectedCard);
+        } else {
+            console.error("Selected card not found in the deck!");
+        }
+    };
+
+    const dealSelectedCard = (selectedCard: ITarotCard) => {
+        console.log("Dealing selected card:", selectedCard);
+        if (selectedSpreadValue === "" || selectedTopicValue === "") {
+            toast.error("Please select a topic and choose a spread!");
+        } else {
+            if (deck.length > 0 && selectedCards.length < 4) {
+                const remainingDeck = deck.filter(card => card !== selectedCard);
+                setDeck(remainingDeck); // Update the deck state with the remaining cards
+                setSelectedCards([...selectedCards, selectedCard]); // Add the dealt card to the selected cards
+                onDeal([...selectedCards, selectedCard]); // Call the onDeal callback function with the dealt card
+            } else if (deck.length === 0) {
+                toast.error("No Cards Left in the Deck!");
+            } else {
+                toast.error("Max Cards Dealt!");
+            }
+        }
+    };
 
 
     const handleTopicSelect = (value: string) => {
@@ -153,17 +184,34 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
                     onSelect={handleSpreadSelect}
                 />
             </div>
-        <div className="glassmorphism grid grid-cols-2 gap-8">
+        <div className="glassmorphism flex flex-col gap-8">
+        <div className='flex justify-center'>
+            <TarotDeckCombobox
+                onSelect={handleCardSelect}
+                tarotDeck={deck.map(card => ({
+                    value: card.title,
+                    label: card.title,
+                }))}
+            />
+            </div>
+            <div className='grid grid-cols-2 gap-8'>
             <button 
             onClick={handleShuffle} 
             className="bg-blue-500 text-white px-4 py-2 rounded flex justify-center"
             >Shuffle Deck
             </button>
+                {/* <button
+                      className="w-16 mx-auto px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 flex justify-center"
+                      onClick={() => (handleTopicSelect(""))}
+                  >
+                      <Eye className="w-4 h-4" />
+                </button> */}
             <button 
             onClick={handleDeal} 
             className="bg-green-500 text-white px-4 py-2 rounded flex justify-center"
             >Deal Cards
             </button>
+            </div>
         </div>
         </div>
 

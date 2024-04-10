@@ -37,20 +37,20 @@ export function TopicsCombobox({ onSelect }: { onSelect: (value: string) => void
       label: "Career",
     },
     {
-      value: "Daily",
-      label: "Daily",
+      value: "Today",
+      label: "Today",
     },
     {
-      value: "Weekly",
-      label: "Weekly",
+      value: "This Week",
+      label: "This Week",
     },
     {
-      value: "Monthly",
-      label: "Monthly",
+      value: "This Month",
+      label: "This Month",
     },
     {
-      value: "Yearly",
-      label: "Yearly",
+      value: "This Year",
+      label: "This Year",
     }
   ];
 
