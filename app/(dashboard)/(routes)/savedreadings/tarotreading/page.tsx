@@ -128,6 +128,7 @@ const TarotReadingPage = () => {
             <ReadingMat
               cards={cards} // Assuming dealtCards is a property of the reading object
               onCardRemove={handleCardRemove}
+              positions={['']}
             />
           </div>
 

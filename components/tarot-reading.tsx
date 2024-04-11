@@ -17,6 +17,7 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
     const [dealtCards, setDealtCards] = useState<ITarotCard[]>([]);
     const [selectedTopicValue, setSelectedTopicValue] = React.useState("");
     const [selectedSpreadValue, setSelectedSpreadValue] = React.useState("");
+    const [positions, setPositions] =  React.useState<string[]>([]);
 
     const handleTopicSelect = (value: string) => {
         setSelectedTopicValue(value);
@@ -27,7 +28,18 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
         setSelectedSpreadValue(value);
         onSpreadChange(value);
       };
-
+      
+      // Update useEffect to run when selectedSpreadValue changes
+    useEffect(() => {
+        if (selectedSpreadValue === "4-Card") {
+            setPositions(["Past", "Challenge", "Advice", "Outcome"]);
+        } else if (selectedSpreadValue === "1-Card") {
+            // If it's a single card spread, you might not need a position, or you might want to label it differently like "Insight"
+            setPositions(["Insight"]); // Changed "*" to "Insight" for clarity, adjust as needed
+        }
+        // Add any other else if conditions for different spreads here
+    }, [selectedSpreadValue]); // Make sure to include selectedSpreadValue in the dependency array
+     
 
     useEffect(() => {
         const fetchTarotDeck = async () => {
@@ -76,6 +88,7 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
             <ReadingMat
                 cards={dealtCards}
                 onCardRemove={handleCardRemove}
+                positions={positions}
             />
         </div>
     );

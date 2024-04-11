@@ -132,24 +132,46 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
             console.log("Card Dealt"); // Replace this with the actual logic for dealing a card
             console.log("Deck length:", deck.length);
             console.log("Selected cards length:", selectedCards.length);
-            if (deck.length > 0 && selectedCards.length < 4) {
-                // console.log("Dealt Cards Pile: ", deck);
-                // console.log("dealing!!!");
-    
-                // Deal one card from the deck using dealCards function
-                const { dealtCard, remainingDeck } = dealCards(deck, 1);
-                
-                setDeck(remainingDeck); // Update the deck state with the remaining cards
-                setSelectedCards([...selectedCards, ...dealtCard]); // Add the dealt card to the selected cards
-                onDeal([...selectedCards, ...dealtCard]); // Call the onDeal callback function with the dealt card
-                // console.log("Dealt Card: ", dealtCard);
-                // console.log("Previous Cards Dealt: ", selectedCards);
-            } else if (deck.length === 0) {
-                // console.log("No Cards Left in the Deck!");
+            if (selectedSpreadValue == "4-Card") {  
+                if (deck.length > 0 && selectedCards.length < 4) {
+                    // console.log("Dealt Cards Pile: ", deck);
+                    // console.log("dealing!!!");
+                    
+                    // Deal one card from the deck using dealCards function
+                    const { dealtCard, remainingDeck } = dealCards(deck, 1);
+                    
+                    setDeck(remainingDeck); // Update the deck state with the remaining cards
+                    setSelectedCards([...selectedCards, ...dealtCard]); // Add the dealt card to the selected cards
+                    onDeal([...selectedCards, ...dealtCard]); // Call the onDeal callback function with the dealt card
+                    // console.log("Dealt Card: ", dealtCard);
+                    // console.log("Previous Cards Dealt: ", selectedCards);
+                } else if (deck.length === 0) {
+                    // console.log("No Cards Left in the Deck!");
                 toast.error("No Cards Left in the Deck!");
-            }else {
-                // console.log("Max Cards Dealt!");
-                toast.error("Max Cards Dealt!");
+                } else {
+                    // console.log("Max Cards Dealt!");
+                    toast.error("Max Cards Dealt!");
+                }
+            }  else if (selectedSpreadValue == "1-Card") {
+                if (deck.length > 0 && selectedCards.length < 1) {
+                    // console.log("Dealt Cards Pile: ", deck);
+                    // console.log("dealing!!!");
+                    
+                    // Deal one card from the deck using dealCards function
+                    const { dealtCard, remainingDeck } = dealCards(deck, 1);
+                    
+                    setDeck(remainingDeck); // Update the deck state with the remaining cards
+                    setSelectedCards([...selectedCards, ...dealtCard]); // Add the dealt card to the selected cards
+                    onDeal([...selectedCards, ...dealtCard]); // Call the onDeal callback function with the dealt card
+                    // console.log("Dealt Card: ", dealtCard);
+                    // console.log("Previous Cards Dealt: ", selectedCards);
+                } else if (deck.length === 0) {
+                    // console.log("No Cards Left in the Deck!");
+                toast.error("No Cards Left in the Deck!");
+                } else {
+                    // console.log("Max Cards Dealt!");
+                    toast.error("Max Cards Dealt!");
+                }
             }
         }
         dealCard();

@@ -5,11 +5,11 @@ import Image from 'next/image';
 interface Props {
     cards: ITarotCard[];
     onCardRemove: (index: number) => void;
+    positions: string[];
 }
 
 
-const ReadingMat: React.FC<Props> = ({ cards, onCardRemove }) => {
-    const positions = ["Past", "Challenge", "Advice", "Outcome"];
+const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions}) => {
 
     return (
         <div className="glassmorphism flex flex-row justify-center gap-4 mb-2">

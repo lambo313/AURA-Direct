@@ -20,13 +20,13 @@ import {
 
 export function SpreadCombobox({ onSelect }: { onSelect: (value: string) => void }) {
   const spreads = [
-    // {
-    //   value: "1-Card",
-    //   label: "1-Card",
-    // },
     {
       value: "4-Card",
       label: "4-Card",
+    },
+      {
+      value: "1-Card",
+      label: "1-Card",
     },
     // {
     //   value: "Celtic",

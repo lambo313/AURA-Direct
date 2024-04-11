@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import axios from "axios";
 
 import * as z from "zod";
@@ -42,6 +42,8 @@ const TarotReaderPage = () => {
   const [isSaved, setIsSaved] = useState(false);
 
   const [messages, setMessages] = useState<OpenAI.Chat.ChatCompletionMessageParam[]>([])
+  const [instructionContent, setInstructionContent] = React.useState("");
+  const [maxCardsToDeal, setMaxCardsToDeal] = useState(0);
 
   const handleTopicChange = (value: string) => {
     setSelectedTopicValue(value);
@@ -65,6 +67,22 @@ useEffect(() => {
 
   const isLoading = form.formState.isSubmitting;
 
+  useEffect(() => {
+    if (selectedSpreadValue === '4-Card') {
+      setMaxCardsToDeal(4)
+      setInstructionContent("You are a tarot reader being given instructions to perform your tarot reading in the following sequential format: The main components of the information you will receive is a data string seperated by a dash(-). The first item on the list is considered the Topic/Theme of the entire reading - therefore, your first task is to stick to the Topic(if the Topic is specified as General, no need to mention the Topic, otherise, stick to, if not, emphasize the Topic). The second item on the list is considered the Dealt Cards - Your second task is to analyze the Dealt Cards(a comma separated string that you will split into a list) with the following template: index1=Past, index2=Challenge, index3=Advice, index4=Outcome. You must provide your response as an analysis in the form of a list(potentially, nested) with bullet points included and bold the indexes. After each card is analyzed - end the reading with a response that is a detailed summary painting a vivid picture of the entire reading - you are looking to conclude the reading by connecting the card meanings together to get the overall reading analysis in regards to the Topic.")
+    } else if (selectedSpreadValue === '1-Card') {
+      setMaxCardsToDeal(1)
+      setInstructionContent("You are a tarot reader being given instructions to perform your tarot reading in the following sequential format: The main components of the information you will receive is a data string seperated by a dash(-). The first item on the list is considered the Topic/Theme of the entire reading - therefore, your first task is to stick to the Topic(if the Topic is specified as General, no need to mention the Topic, otherise, stick to, if not, emphasize the Topic). The second item on the list is considered the Dealt Card - Your second task is to analyze the Dealt Card(a string). You must provide your response as an analysis in the form of a list(potentially, nested) with bullet points included and bold the indexes. After the card is analyzed - end the reading with a response that is a detailed summary painting a vivid picture of the entire reading - you are looking to get the overall reading analysis in regards to the Topic.")
+    }
+  }, [selectedSpreadValue])
+
+
+  const instructionMessage = {
+    role: "system",
+    content: instructionContent
+}
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
     try {
@@ -74,7 +92,8 @@ useEffect(() => {
       }
       const newMessages = [...messages, userMessage]
 
-      const response = await axios.post("/api/tarotreader", { messages: newMessages });
+      const response = await axios.post("/api/tarotreader", { messages: newMessages, instructions: instructionMessage });
+      console.log("Instruction Message!!: ", instructionMessage)
 
       setMessages((current) => [...current, userMessage, response.data]);
 
@@ -228,12 +247,8 @@ useEffect(() => {
                 />
                 <Button 
                 className="col-span-12 lg:col-span-2 w-full" 
-                disabled={isLoading || isGenerated || dealtCards.length < 4}
+                disabled={isLoading || isGenerated || dealtCards.length < maxCardsToDeal || maxCardsToDeal == 0}
                 onClick={() => {
-                  if (dealtCards.length < 4) {
-                      toast.error("Not enough cards dealt");
-                      return;
-                  }
                   // Add your onClick handler logic here
                   
                 }}
