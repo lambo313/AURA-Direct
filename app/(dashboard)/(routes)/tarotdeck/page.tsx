@@ -34,7 +34,7 @@ const TarotDeckPage = () => {
 
   const handleTarotCardClick = (card: ITarotCard) => {
     if (card) {
-      console.log('THE CARD!!!',card);
+      // console.log('THE CARD!!!',card);
       router.push(`/tarotdeck/tarotcard/?id=${card._id}`);
     }
   };

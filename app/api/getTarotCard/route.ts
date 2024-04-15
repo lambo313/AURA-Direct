@@ -9,11 +9,11 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
 
         const data = await request.json()
         const cardId = data.id
-        console.log("FETCHING CARD ID: ", cardId)
+        // console.log("FETCHING CARD ID: ", cardId)
         
         // Fetch tarot card data from the database
         const tarotCardData = await TarotCard.findById( cardId );
-        console.log('card data: ', tarotCardData)
+        // console.log('card data: ', tarotCardData)
 
         // Return the fetched data as a response
         return new Response(JSON.stringify(tarotCardData), { status: 200 });

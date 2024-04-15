@@ -44,7 +44,7 @@ const TarotCardPage = () => {
         fetchCard();
     }, [cardId]);
 
-    const isHebrewLetterPresent = card && card.astroPower['hebrewLetter'];
+    const isHebrewLetterPresent = card && card.kabalism['hebrewLetter'];
 
     useEffect(() => {
       if (isHebrewLetterPresent) {
@@ -256,9 +256,8 @@ const TarotCardPage = () => {
                             {key === 'treeOfLifePath' && (
                               <>
                                 <div className="flex flex-row gap-1">
-                                  <p><strong>Tree of Life:</strong></p>
                                   {card.kabalism['treeOfLifePath'].map((value: any, index) => (
-                                    <p key={index}>{value}</p> // Using index as a key because specific details of value uniqueness are unknown
+                                    <p key={index}><strong> Tree of Life:</strong>{" "+ value}</p> // Using index as a key because specific details of value uniqueness are unknown
                                   ))}
                                 </div>
                               </>
