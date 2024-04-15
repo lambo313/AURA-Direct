@@ -1,25 +1,18 @@
 import mongoose , { Schema, Document } from 'mongoose';
 
-type ObjectId = string;
-
 export interface ITarotCard extends Document {
-    _id: ObjectId
     title: string;
     cardImage: string;
     cardDescription: string;
     arcana: string;
     uprightEffect: string;
     reversedEffect: string;
-    hebrewLetter: string;
-    astroPower: { [key: string]: ObjectId[] }; // Define astroPower as an object containing an array of ObjectIds
-    treeOfLifePath: string;
+    kabalism: { [key: string]: Object[] };
+    astroPower: { [key: string]: Object[] }; // Define astroPower as an object containing an array of ObjectIds
     divinatoryMeaning: string[];
 }
 
 const TarotCardSchema = new mongoose.Schema<ITarotCard>({
-    _id: {
-        type: String,
-    },
     title: {
         type: String,
     },
@@ -38,14 +31,11 @@ const TarotCardSchema = new mongoose.Schema<ITarotCard>({
     reversedEffect: {
         type: String,
     },
-    hebrewLetter: {
-        type: String,
+    kabalism: {
+        type: Object,
     },
     astroPower: {
         type: Object, 
-    },
-    treeOfLifePath: {
-        type: String,
     },
     divinatoryMeaning: {
         type: [String],

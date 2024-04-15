@@ -24,11 +24,11 @@ export async function POST(
     try {
         const { userId } = auth();
         const body = await req.json();
-        console.log('BODY!: ', body)
+        // console.log('BODY!: ', body)
         const { messages, instructions } = body;
 
-        console.log("MESSAGES: ", messages)
-        console.log("INSTRUCTIONS: ", instructions)
+        // console.log("MESSAGES: ", messages)
+        // console.log("INSTRUCTIONS: ", instructions)
 
         if (!userId) {
             return new NextResponse("Unauthorized", {status: 401})

@@ -14,7 +14,7 @@ const SavedReadingsPage = () => {
   const router = useRouter();
   const [savedReadings, setSavedReadings] = useState<ITarotReadingDocument[]>([]);
 
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
 
   const [selectedTopicValue, setSelectedTopicValue] = React.useState("");
     const [selectedSpreadValue, setSelectedSpreadValue] = React.useState("");
@@ -27,20 +27,20 @@ const SavedReadingsPage = () => {
     setSelectedSpreadValue(value);
   };
 
-  useEffect(() => {
-    async function fetchUserId() {
-      try {
-        const response = await fetch('/api/getUserId');
-        const data = await response.json();
-        // console.log('DATA!!!: ', data)
-        setUserId(data.userId);
-      } catch (error) {
-        console.error('Error fetching email:', error);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchUserId() {
+  //     try {
+  //       const response = await fetch('/api/getUserId');
+  //       const data = await response.json();
+  //       // console.log('DATA!!!: ', data)
+  //       setUserId(data.userId);
+  //     } catch (error) {
+  //       console.error('Error fetching email:', error);
+  //     }
+  //   }
 
-    fetchUserId();
-  }, []);
+  //   fetchUserId();
+  // }, []);
 
   useEffect(() => {
     const fetchSavedReadings = async () => {

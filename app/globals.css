@@ -6,7 +6,11 @@ html,
 body,
 :root {
   height: 100%;
-  --logo-background: linear-gradient(to top left, #fdc600, #fde68a, #f59e0b);
+  --logo-background: linear-gradient(to top left, #E6AD00, #fde68a, #DDAA0F);
+}
+
+.grad {
+  background: linear-gradient(to top left, #E6BB00, #fde68a, #CDA600);
 }
 
 
@@ -19,7 +23,7 @@ body,
 }
 
 .shadow-custom-golden {
-  background: linear-gradient(to bottom left, #fdc600, #fde68a, #f59e0b);
+  background: linear-gradient(to bottom left, #E6AD00, #fde68a, #DDAA0F);
   box-shadow: 0 4px 6px rgba(218, 165, 32, 0.4);
 }
 

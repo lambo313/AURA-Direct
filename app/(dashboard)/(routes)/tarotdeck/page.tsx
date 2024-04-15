@@ -25,134 +25,40 @@ import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { toast } from "react-hot-toast";
 import TarotDeck from "@/components/tarot-deck-content";
+import { ITarotCard } from "@/models/TarotCards"; // Import the ITarotCard interface
+// import { TarotCardProvider } from '@/components/tarot-card-context';
 
 const TarotDeckPage = () => {
-  // const proModal = useProModal();
-  // const router = useRouter();
+  const router = useRouter();
+  // const [selectedCard, setSelectedCard] = useState<ITarotCard | null>(null);
 
-  // const [messages, setMessages] = useState<OpenAI.Chat.ChatCompletionMessageParam[]>([])
-  
-  // const form = useForm<z.infer<typeof formSchema>>({
-  //   resolver: zodResolver(formSchema),
-  //   defaultValues: {
-  //     prompt: ""
-  //   }
-  // });
+  const handleTarotCardClick = (card: ITarotCard) => {
+    if (card) {
+      console.log('THE CARD!!!',card);
+      router.push(`/tarotdeck/tarotcard/?id=${card._id}`);
+    }
+  };
 
-  // const isLoading = form.formState.isSubmitting;
-
-  // const onSubmit = async (values: z.infer<typeof formSchema>) => {
-  //   console.log(values);
-  //   try {
-  //     const userMessage: OpenAI.Chat.ChatCompletionMessageParam = {
-  //       role: "user",
-  //       content: values.prompt
-  //     }
-  //     const newMessages = [...messages, userMessage]
-
-  //     const response = await axios.post("/api/tarotdeck", { messages: newMessages });
-
-  //     setMessages((current) => [...current, userMessage, response.data]);
-
-  //     form.reset();
-  //   } catch (error: any) {
-  //     if (error?.response?.status === 403) {
-  //       proModal.onOpen();
-  //     } else {
-  //       toast.error("Something went wrong")
-  //     }
-
-  //   } finally {
-  //     router.refresh();
-  //   }
-  // };
 
   return (
-    <div>
-        <Heading
-          title="Tarot Deck"
-          description="Our most advanced tarot model."
-          icon={Layers}
-          iconColor="text-violet-500"
-          bgColor="bg-violet-500/10"
-        />
-        <div className="px-4 lg:px-8">
-          {/* <div>
-            <Form
-              {...form}
-            >
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="rounded-lg
-                border
-                w-full
-                p-4
-                px-3
-                md:px-6
-                focus-within:shadow-sm
-                grid
-                grid-cols-12
-                gap-2
-                "
-              >
-                <FormField
-                  name="prompt"
-                  render={({ field}) => (
-                    <FormItem className="col-span-12 lg:col-span-10">
-                      <FormControl className="m-0 p-0">
-                        <Input
-                          className="border-0 outline-none 
-                          focus-visible:ring-0 
-                          focus-visible:ring-transparent"
-                          disabled={isLoading}
-                          placeholder="How do I calculate the radius of a circle?"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <Button 
-                className="col-span-12 lg:col-span-2 w-full" 
-                disabled={isLoading}>
-                  Generate
-                </Button>
-              </form>
-            </Form>
-          </div> */}
-          <div className="h-full">
-            <TarotDeck/>
-          </div>
-          {/* <div className="space-y-4 mt-4">
-            { isLoading && (
-              <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
-                <Loader/>
-              </div>  
-            )}
-            {messages.length === 0 && !isLoading && (
-              <div>
-                <Empty label="No conversation started"/>
-              </div>
-            )}
-            <div className="flex flex-col-reverse gap-y-4">
-              {messages.map((message) => (
-                <div 
-                key={message.content?.toString()}
-                className={cn(
-                  "p-8 w-full flex items-start gap-x-8 rounded-lg",
-                  message.role === "user" ? "bg-white border border-black/10" : "bg-muted"
-                  )}
-                >
-                  {message.role === "user" ? <UserAvatar/> : <BotAvatar/>}
-                  <p className="text-sm">
-                    {message.content?.toString()}
-                  </p>
-                </div>
-              ))}
+    // <TarotCardProvider>
+      <div>
+          <Heading
+            title="Tarot Deck"
+            description="Our most advanced tarot model."
+            icon={Layers}
+            iconColor="text-violet-500"
+            bgColor="bg-violet-500/10"
+          />
+          <div className="px-4 lg:px-8">
+            <div className="h-full">
+              <TarotDeck
+              getCard={handleTarotCardClick}
+              />
             </div>
-          </div> */}
-        </div>
-    </div>
+          </div>
+      </div>
+    // </TarotCardProvider>
   )
 }
 

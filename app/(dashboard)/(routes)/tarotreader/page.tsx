@@ -13,7 +13,8 @@ import { useRouter } from "next/navigation"
 
 import { formSchema } from "./constants";
  
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormDescription,  FormLabel, FormMessage,} from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { OpenAI } from "openai";
@@ -28,7 +29,31 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { toast } from "react-hot-toast";
 import { ITarotCard } from '@/models/TarotCards';
 import TarotReading from "@/components/tarot-reading";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
+
+const formSchema2 = z.object({
+  title: z.string().optional(),
+  notes: z.string().optional()
+})
+
+// export function AddReadingDetailsForm() {
+//   // 1. Define your form.
+//   const dtailsForm = useForm<z.infer<typeof formSchema2>>({
+//     resolver: zodResolver(formSchema2),
+//     defaultValues: {
+//       title: "",
+//       notes: ""
+//     },
+//   })
+ 
+//   // 2. Define a submit handler.
+//   function onSubmit(values: z.infer<typeof formSchema>) {
+//     // Do something with the form values.
+//     // ✅ This will be type-safe and validated.
+//     console.log(values)
+//   }
+// }
 
 const TarotReaderPage = () => {
   const proModal = useProModal();
@@ -64,6 +89,14 @@ useEffect(() => {
       prompt: "" 
     }
   });
+
+  const detailsForm = useForm<z.infer<typeof formSchema2>>({
+    resolver: zodResolver(formSchema2),
+    defaultValues: {
+      title: "",
+      notes: ""
+    },
+  })
 
   const isLoading = form.formState.isSubmitting;
 
@@ -198,7 +231,13 @@ useEffect(() => {
           iconColor="text-green-700"
           bgColor="bg-green-700/10"
         />
-        <div className="px-4 lg:px-8">
+        <Tabs defaultValue="tarot-reader" className="w-full">
+          <TabsList className="w-full">
+            <TabsTrigger className="w-full" value="tarot-reader">AURA</TabsTrigger>
+            {/* <TabsTrigger className="w-full" value="add-details">Additional Details</TabsTrigger> */}
+          </TabsList>
+          <TabsContent value="tarot-reader">
+          <div className="px-4 lg:px-8">
           <div className="h-full">
             <TarotReading
               onDealtCardsChange={handleDealtCardsChange}
@@ -299,7 +338,50 @@ useEffect(() => {
             </div>
           </div>
 
+        </div>
+          </TabsContent>
+          <TabsContent className="glassmorphism max-w-2xl w-10/12 mx-auto mt-2" value="add-details">
+            {/* Additional Details here. */}
+            <Form {...detailsForm}>
+              <form className="space-y-8">
+                <FormField
+                  control={detailsForm.control}
+                  name="title"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Title</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter Title(Optional)" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        This is your reading title.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={detailsForm.control}
+                  name="notes"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Notes</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter Notes(Optional)" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        These are your reading notes.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </form>
+            </Form>
+          </TabsContent>
+        </Tabs>
 
+        
           {/* Save Button Section */}
           {messages.length > 0 && (
             <div className="flex justify-center mt-4">
@@ -311,8 +393,6 @@ useEffect(() => {
               </Button>
             </div>
           )}
-
-        </div>
     </div>
   )
 }

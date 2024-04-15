@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import TarotCard from "./tarot-card";
 import { ITarotCard } from "@/models/TarotCards"; // Import the ITarotCard interface
@@ -8,10 +10,10 @@ interface TarotCardListProps {
   handleTagClick: (tagName: string) => void; // Define the type for the handleTagClick function
   handleEdit: () => void; // Define the handleEdit function prop
   handleDelete: () => void; // Define the handleDelete function prop
-  onSelect: (card: ITarotCard) => void;
+  onCardSelect: (tarotCard: object) => void;
 }
 
-const TarotCardList = ({ data, handleTagClick, handleEdit, handleDelete }: TarotCardListProps) => {
+const TarotCardList = ({ data, handleTagClick, handleEdit, handleDelete, onCardSelect  }: TarotCardListProps) => {
   return (
     <div className="mt-16 flex flex-wrap justify-center gap-4">
       {data.map((tarotCard) => (
@@ -21,13 +23,18 @@ const TarotCardList = ({ data, handleTagClick, handleEdit, handleDelete }: Tarot
           handleTagClick={handleTagClick}
           handleEdit={handleEdit}
           handleDelete={handleDelete}
+          onCardClick={onCardSelect }
         />
       ))}
     </div>
   );
 };
 
-const TarotDeck = () => {
+interface TarotDeckProps {
+  getCard: (card: ITarotCard) => void;
+}
+
+const TarotDeck = ({ getCard }: TarotDeckProps) => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState<number | undefined>(undefined);
 
@@ -36,9 +43,11 @@ const TarotDeck = () => {
   
   const [selectedCards, setSelectedCards] = useState<ITarotCard[]>([]);
 
-    const handleCardSelect = (card: any) => {
-        setSelectedCards([...selectedCards, card]);
+    const handleCardSelect = (cardData: any) => {
+        setSelectedCards([...selectedCards, cardData]);
+        getCard(cardData)
     };
+
 
   const fetchTarotCards = async () => {
     try {
@@ -118,7 +127,7 @@ const TarotDeck = () => {
                 handleTagClick={handleTagClick}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
-                onSelect={handleCardSelect}
+                onCardSelect={handleCardSelect}
                 />
             ) : (
                 <TarotCardList 
@@ -126,7 +135,7 @@ const TarotDeck = () => {
                 handleTagClick={handleTagClick} 
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
-                onSelect={handleCardSelect}
+                onCardSelect={handleCardSelect}
                 />
             )}
     </div>

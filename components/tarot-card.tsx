@@ -11,25 +11,13 @@ interface TarotCardProps {
   handleTagClick: (tag: string) => void;
   handleEdit: () => void;
   handleDelete: () => void;
+  onCardClick: (tarotCardId: object) => void; 
 }
 
-const TarotCard = ({ tarotCard, handleTagClick, handleEdit, handleDelete}: TarotCardProps) => {
-  // const router: NextRouter = useRouter();
-
-  // const [copied, setCopied] = useState("");
-
-  // const handleCopy = () => {
-  //   setCopied(tarotCard._id);
-  //   navigator.clipboard.writeText(tarotCard._id);
-  //   setTimeout(() => setCopied(""), 3000);
-  // };
-
+const TarotCard = ({ tarotCard, handleTagClick, handleEdit, handleDelete, onCardClick }: TarotCardProps) => {
   const handleTarotCardClick = () => {
-    console.log(tarotCard);
-    // router.push(`/tarotdeck/tarotcard/${tarotCard._id}?name=${tarotCard.title}`);
-
-    // Handle the tarot card click action
-    // Replace the logic as per your requirements
+    const getCard = tarotCard
+    onCardClick(getCard)
   };
 
   return (
@@ -54,16 +42,17 @@ const TarotCard = ({ tarotCard, handleTagClick, handleEdit, handleDelete}: Tarot
               // style={{ paddingBottom: "100%" }}
               >
                 <div 
-                className="mb-4 tanish-gold-shadow-drop" 
-                // style={{ display: 'flex', justifyContent: 'center' }}
+                className="mb-4 tanish-gold-shadow-drop"
+                style={{ cursor: 'pointer' }}
                 >
                   <Image
                     src={tarotCard.cardImage}
                     alt={tarotCard.title}
-                    // layout="fill"
-                    // objectFit="cover"
-                    width="345"
-                    height={100}
+                    width={345}
+                    height={0}
+                    // sizes="100vw"
+                    // className="w-full max-w-sm h-auto"
+                    // style={{ width: '100%', height: 'auto' }}
                     priority
                   />
                 </div>
@@ -72,7 +61,10 @@ const TarotCard = ({ tarotCard, handleTagClick, handleEdit, handleDelete}: Tarot
                     <p 
                       key={index} 
                       className="text-sm text-white cursor-pointer text-center" 
-                      onClick={() => handleTagClick && handleTagClick(meaning)}
+                      onClick={(e) => {
+                        e.stopPropagation();  // Prevent click from propagating to the card's onClick
+                        handleTagClick(meaning);
+                      }}
                     >
                       #{meaning}
                     </p>

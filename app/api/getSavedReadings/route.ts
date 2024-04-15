@@ -10,7 +10,7 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
 
         const data = await request.json(); // This destructures 'id' from the query parameters and renames it to 'savedReadingId'
         const savedReadingId = data.id
-        // console.log("Saved Reading Id(REQUEST!!!): ", savedReadingId);
+        console.log("Saved Reading Id(REQUEST!!!): ", savedReadingId);
 
         
         // Fetch tarot card data from the database
