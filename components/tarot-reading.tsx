@@ -2,6 +2,7 @@ import React, { useState, useEffect, use } from 'react';
 import ReadingMat from './reading-mat';
 import TarotReader from './tarot-reader';
 import { ITarotCard } from "@/models/TarotCards";;
+import { useRouter } from "next/navigation"
 
 
 interface TarotReadingProps {
@@ -12,6 +13,7 @@ interface TarotReadingProps {
 
 const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopicChange,
     onSpreadChange, }) => {
+    const router = useRouter();
     const [selectedCards, setSelectedCards] = useState<ITarotCard[]>([]);
     const [tarotDeck, setTarotDeck] = useState<ITarotCard[]>([]);
     const [dealtCards, setDealtCards] = useState<ITarotCard[]>([]);
@@ -19,9 +21,21 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
     const [selectedSpreadValue, setSelectedSpreadValue] = React.useState("");
     const [positions, setPositions] =  React.useState<string[]>([]);
 
+    const [isMounted, setIsMounted] = useState(false);
+
+    // useEffect to set isMounted to true when component mounts
+    useEffect(() => {
+        setIsMounted(true);
+        return () => {
+        // Cleanup function to set isMounted to false when component unmounts
+        setIsMounted(false);
+        };
+    }, []);
+
     const handleTopicSelect = (value: string) => {
         setSelectedTopicValue(value);
         onTopicChange(value);
+        console.log('is mounted?: ', isMounted)
       };
     
       const handleSpreadSelect = (value: string) => {
@@ -74,7 +88,15 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
         onDealtCardsChange(dealtCards);
     };
 
+    const handleTarotCardClick = (card: ITarotCard) => {
+        if (card) {
+          router.push(`/tarotdeck/tarotcard/?id=${card}`);
+        }
+      };
+
     return (
+        <>
+        {isMounted && (
         <div className=''>
             <div>
                 <TarotReader
@@ -89,8 +111,11 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
                 cards={dealtCards}
                 onCardRemove={handleCardRemove}
                 positions={positions}
+                onCardClick={handleTarotCardClick}
             />
         </div>
+        )}
+    </>
     );
 };
 

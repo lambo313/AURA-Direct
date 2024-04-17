@@ -13,9 +13,12 @@ import { ITarotReadingDocument } from "@/models/tarotReading";
 import ReadingMat from "@/components/reading-mat";
 import { ObjectId } from "mongoose";
 import { string } from "zod";
+import { useRouter } from "next/navigation"
 
 
 const TarotReadingPage = () => {
+  const router = useRouter();
+
   const [cards, setCards] = useState<ITarotCard[]>([]);
   const [selectedCards, setSelectedCards] = useState<ITarotCard[]>([]);
   const [reading, setReading] = useState<ITarotReadingDocument>();
@@ -76,8 +79,8 @@ const TarotReadingPage = () => {
           const splitResponse = (responseString || '').split('-').map((part: string) => part.trim());;
           const titlesArray = (splitResponse[1] || '').split(',');
           const readingTopic = splitResponse[0];
-          console.log("Titles Array: ", titlesArray)
-          console.log("Topic: ", readingTopic)
+          // console.log("Titles Array: ", titlesArray)
+          // console.log("Topic: ", readingTopic)
           setReadingTopic(readingTopic)
 
           const cardDeck = await response.json();
@@ -91,7 +94,7 @@ const TarotReadingPage = () => {
             }
           }
         
-        console.log("Reordered Dealt Cards: ", reorderedCards);
+        // console.log("Reordered Dealt Cards: ", reorderedCards);
         setCards(reorderedCards);
         } catch (error) {
           console.error("Failed to fetch card details:", error);
@@ -101,6 +104,13 @@ const TarotReadingPage = () => {
       fetchCardsDetails(reading.cards);
     }
   }, [reading]);
+
+  const handleTarotCardClick = (card: ITarotCard) => {
+    if (card) {
+      // console.log('THE CARD!!!',card);
+      router.push(`/tarotdeck/tarotcard/?id=${card}`);
+    }
+  };
   
 
   if (!reading) {
@@ -129,6 +139,7 @@ const TarotReadingPage = () => {
               cards={cards} // Assuming dealtCards is a property of the reading object
               onCardRemove={handleCardRemove}
               positions={['']}
+              onCardClick={handleTarotCardClick}
             />
           </div>
 

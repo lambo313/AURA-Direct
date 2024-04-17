@@ -48,7 +48,7 @@ const SavedReadingsPage = () => {
         // Fetch saved readings data from the server
         const response = await fetch('/api/saveReading');
         let data = await response.json();
-        console.log("DATA: ", data)
+        // console.log("DATA: ", data)
         data = data.reverse();
         setSavedReadings(data);
       } catch (error) {

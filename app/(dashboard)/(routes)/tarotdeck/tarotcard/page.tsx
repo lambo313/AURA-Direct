@@ -21,6 +21,8 @@ const TarotCardPage = () => {
     const [card, setCard] = useState<ITarotCard>();
     const [hebrewLetterData, sethebrewLetterData] = useState<IHebrewLetter>();
     const [elementData, setElementData] = useState<IElement>();
+    const [mainElement, setMainElement] = useState<IElement>();
+    const [minorElement, setMinorElement] = useState<IElement>();
     const [planetData, setPlanetData] = useState<IPlanet>();
     const [zodiacData, setZodiacData] = useState<IZodiac>();
     // console.log('CARD ID!!!: ',cardId)
@@ -100,6 +102,66 @@ const TarotCardPage = () => {
         fetchElement(); 
       }
     }, [isElementalPresent]);
+
+
+    const isMainElementPresent = card && card.astroPower['mainElement'];
+
+    useEffect(() => {
+      if (isMainElementPresent) {
+        const fetchElement = async () => {
+          try {
+            const response = await fetch(`/api/getElement`, {
+              method: "POST",
+              headers: {
+            "Content-Type": "application/json",
+              },
+              body: JSON.stringify({id: card.astroPower['mainElement']}),
+            });
+            if (!response.ok) {
+              throw new Error(`Failed to fetch element: ${response.status}`);
+            }
+  
+            const fetchedElement = await response.json(); 
+  
+            // console.log("Fetched Element!!!: ", fetchedElement)
+            setMainElement(fetchedElement);
+          } catch (error) {
+            console.error("Error fetching element:", error);
+          }
+        };
+        fetchElement(); 
+      }
+    }, [isMainElementPresent]);
+
+
+    const isMinorElementPresent = card && card.astroPower['minorElement'];
+
+    useEffect(() => {
+      if (isMinorElementPresent) {
+        const fetchElement = async () => {
+          try {
+            const response = await fetch(`/api/getElement`, {
+              method: "POST",
+              headers: {
+            "Content-Type": "application/json",
+              },
+              body: JSON.stringify({id: card.astroPower['minorElement']}),
+            });
+            if (!response.ok) {
+              throw new Error(`Failed to fetch element: ${response.status}`);
+            }
+  
+            const fetchedElement = await response.json(); 
+  
+            // console.log("Fetched Element!!!: ", fetchedElement)
+            setMinorElement(fetchedElement);
+          } catch (error) {
+            console.error("Error fetching element:", error);
+          }
+        };
+        fetchElement(); 
+      }
+    }, [isMinorElementPresent]);
 
 
     const isPlanetPresent = card && card.astroPower['planetary'];
@@ -192,7 +254,9 @@ const TarotCardPage = () => {
             <div className="glassmorphism">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                  <h2 className="text-2xl font-semibold underline">Astrology</h2>
+                      <h2 className="text-2xl font-semibold underline">Astrology</h2>
+                      {card.arcana === "Major" && (
+                       <>
                       <ul>
                         {Object.keys(card.astroPower).map((key) => (
                           <li key={key}>
@@ -201,8 +265,8 @@ const TarotCardPage = () => {
                               <div className="flex flex-row gap-1">
                                 <p> <strong>Elemental:</strong></p>
                                 {elementData?.title}
+                                <p className="text-2xl -mt-1 font-semibold">{elementData?.textSymbol}</p>
                               </div>
-                              <p className="text-2xl -mt-1 font-semibold">{elementData?.textSymbol}</p>
                               </>
                             )} 
                             {key === 'planetary' && (
@@ -210,8 +274,8 @@ const TarotCardPage = () => {
                               <div className="flex flex-row gap-1">
                                 <p> <strong>Planetary:</strong></p>
                                 {planetData?.title}
+                                <p className="text-2xl -mt-1 font-semibold">{planetData?.textSymbol}</p>
                               </div>
-                              <p className="text-2xl -mt-1 font-semibold">{planetData?.textSymbol}</p>
                               </>
                             )}
                             {key === 'zodiacal' && (
@@ -219,13 +283,74 @@ const TarotCardPage = () => {
                               <div className="flex flex-row gap-1">
                                 <p> <strong>Zodiacal:</strong></p>
                                 {zodiacData?.title}
+                                <p className="text-2xl -mt-1 font-semibold">{zodiacData?.textSymbol}</p>
                               </div>
-                              <p className="text-2xl -mt-1 font-semibold">{zodiacData?.textSymbol}</p>
                               </>
                             )}
                           </li>
                         ))}
                       </ul>
+                      </>
+                      )}
+                      {card.arcana === "Minor" && (
+                       <>
+                      <ul>
+                        {Object.keys(card.astroPower).map((key) => (
+                          <li key={key}>
+                            {key === 'elemental' && (
+                              <>
+                              <div className="flex flex-row gap-1">
+                                <p> <strong>Elemental:</strong></p>
+                                {elementData?.title}
+                              <p className="text-2xl -mt-1 font-semibold">{elementData?.textSymbol}</p>
+                              </div>
+                              </>
+                            )} 
+                            {key === 'planetary' && (
+                              <>
+                              <div className="flex flex-col">
+                                <p> <strong>Transitory:</strong></p>
+                                <div className="flex flex-row items-center gap-1 flex-wrap">
+                                  <div className="flex flex-row gap-1">
+                                    {planetData?.title}
+                                    <p className="text-2xl -mt-1 font-semibold leading-none">{planetData?.textSymbol}</p>
+                                  </div>
+                                  -<strong>in</strong>-
+                                  <div className="flex flex-row gap-1">
+                                    {zodiacData?.title}
+                                    <p className="text-2xl -mt-1 font-semibold">{zodiacData?.textSymbol}</p>
+                                  </div>
+                                </div>
+                              </div>
+                              </>
+                            )}
+
+                            {key === 'minorElement' && (
+                              <>
+                              <div className="flex flex-col">
+                                <p> <strong>Elemental:</strong></p>
+                                <div className="flex flex-row items-center gap-1 flex-wrap">
+                                  <div className="flex flex-row gap-1">
+                                    {"The "+ minorElement?.title}
+                                    <p className="text-2xl -mt-1 font-semibold leading-none">{minorElement?.textSymbol}</p>
+                                  </div>
+                                  -<strong>in the world of</strong>-
+                                  <div className="flex flex-row gap-1 flex-wrap">
+                                    {mainElement?.title}
+                                    {/* {"("+mainElement?.world+")"} */}
+                                    <p className="text-2xl -mt-1 font-semibold leading-none">{mainElement?.textSymbol}</p>
+                                  </div>
+                                </div>
+                              </div>
+                              </>
+                            )}
+                          
+                     
+                          </li>
+                        ))}
+                      </ul>
+                      </>
+                      )}
                       <h2 className="text-2xl font-semibold underline mt-4">Card Description</h2>
                       <p>{card.cardDescription}</p>
                       <h2 className="text-2xl font-semibold underline mt-4">Arcana</h2>
@@ -249,8 +374,8 @@ const TarotCardPage = () => {
                               <div className="flex flex-row gap-1">
                                 <p> <strong>Hebrew Letter:</strong></p>
                                 {hebrewLetterData?.title}
+                                <p className="text-2xl -mt-1 font-semibold">{hebrewLetterData?.hebrewLetter}</p>
                               </div>
-                              <p className="text-2xl -mt-1 font-semibold">{hebrewLetterData?.hebrewLetter}</p>
                               </>
                             )} 
                             {key === 'treeOfLifePath' && (

@@ -14,6 +14,8 @@ import { useRouter } from "next/navigation"
 import { formSchema } from "./constants";
  
 import { Form, FormControl, FormField, FormItem, FormDescription,  FormLabel, FormMessage,} from "@/components/ui/form";
+import { Textarea } from "@/components/ui/textarea"
+
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -37,31 +39,15 @@ const formSchema2 = z.object({
   notes: z.string().optional()
 })
 
-// export function AddReadingDetailsForm() {
-//   // 1. Define your form.
-//   const dtailsForm = useForm<z.infer<typeof formSchema2>>({
-//     resolver: zodResolver(formSchema2),
-//     defaultValues: {
-//       title: "",
-//       notes: ""
-//     },
-//   })
- 
-//   // 2. Define a submit handler.
-//   function onSubmit(values: z.infer<typeof formSchema>) {
-//     // Do something with the form values.
-//     // ✅ This will be type-safe and validated.
-//     console.log(values)
-//   }
-// }
-
 const TarotReaderPage = () => {
   const proModal = useProModal();
   const router = useRouter();
+  
 
   const [dealtCards, setDealtCards] = useState<ITarotCard[]>([]);
   const [selectedTopicValue, setSelectedTopicValue] = React.useState("");
   const [selectedSpreadValue, setSelectedSpreadValue] = React.useState("");
+
 
   const [isGenerated, setIsGenerated] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -185,10 +171,6 @@ useEffect(() => {
         return;
       }
   
-      // Get the last message content
-      // const lastMessageContent =
-      //   messages[messages.length - 1]?.content?.toString() || "";
-  
       const newReading = {
         userId: userId,
         cards: dealtCards,
@@ -221,6 +203,7 @@ useEffect(() => {
   };
   
   
+  
 
   return (
     <div className="pb-4">
@@ -231,12 +214,13 @@ useEffect(() => {
           iconColor="text-green-700"
           bgColor="bg-green-700/10"
         />
-        <Tabs defaultValue="tarot-reader" className="w-full">
+        <Tabs defaultValue='tarot-reader' className="w-full">
           <TabsList className="w-full">
             <TabsTrigger className="w-full" value="tarot-reader">AURA</TabsTrigger>
-            {/* <TabsTrigger className="w-full" value="add-details">Additional Details</TabsTrigger> */}
+            <TabsTrigger className="w-full" value="add-details">Additional Details</TabsTrigger>
           </TabsList>
           <TabsContent value="tarot-reader">
+
           <div className="px-4 lg:px-8">
           <div className="h-full">
             <TarotReading
@@ -337,8 +321,8 @@ useEffect(() => {
               ))}
             </div>
           </div>
-
         </div>
+
           </TabsContent>
           <TabsContent className="glassmorphism max-w-2xl w-10/12 mx-auto mt-2" value="add-details">
             {/* Additional Details here. */}
@@ -367,7 +351,8 @@ useEffect(() => {
                     <FormItem>
                       <FormLabel>Notes</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter Notes(Optional)" {...field} />
+                        {/* <Input placeholder="Enter Notes(Optional)" {...field} /> */}
+                        <Textarea placeholder="Enter Notes(Optional)" {...field}/>
                       </FormControl>
                       <FormDescription>
                         These are your reading notes.
