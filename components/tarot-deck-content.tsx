@@ -65,7 +65,7 @@ const TarotDeck = ({ getCard }: TarotDeckProps) => {
 
   const filterTarotCards = (searchText: string) => {
     const regex = new RegExp(searchText, "i"); // 'i' flag for case-insensitive search
-    return tarotCards.filter(
+    const filteredCards = tarotCards.filter(
       (tarotCard: any) =>
         regex.test(tarotCard.title) ||
         regex.test(tarotCard.divinatoryMeaning)
@@ -74,6 +74,9 @@ const TarotDeck = ({ getCard }: TarotDeckProps) => {
         // regex.test(tarotCard.cardDescription)
       // Add more filters as needed
     );
+    console.log('Filtered Tarot Cards:', filteredCards); // Log the filtered cards array
+    
+    return filteredCards;
   };
 
   const handleSearchChange = (e: any) => {

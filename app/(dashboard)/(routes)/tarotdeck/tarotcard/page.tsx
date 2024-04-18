@@ -254,7 +254,23 @@ const TarotCardPage = () => {
             <div className="glassmorphism">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                      <h2 className="text-2xl font-semibold underline">Astrology</h2>
+                      <h2 className="text-2xl font-semibold underline">Arcana</h2>
+                      <p>{card.arcana}</p>
+                      <h2 className="text-2xl font-semibold underline mt-4">Card Description</h2>
+                      <p>{card.cardDescription}</p>
+                      {/* {
+                          hebrewLetterData?.title !== "" && (
+                              <>
+                                  <h2 className="text-2xl font-semibold underline mt-4">Hebrew Letter</h2>
+                                  <p>{hebrewLetterData?.title}</p>
+                                  <p className="text-2xl -mt-1">{hebrewLetterData?.hebrewLetter}</p>
+                              </>
+                          )
+                      } */}
+                  </div>
+
+                  <div>
+                  <h2 className="text-2xl font-semibold underline">Astrology</h2>
                       {card.arcana === "Major" && (
                        <>
                       <ul>
@@ -351,20 +367,15 @@ const TarotCardPage = () => {
                       </ul>
                       </>
                       )}
-                      <h2 className="text-2xl font-semibold underline mt-4">Card Description</h2>
-                      <p>{card.cardDescription}</p>
-                      <h2 className="text-2xl font-semibold underline mt-4">Arcana</h2>
-                      <p>{card.arcana}</p>
-                      {/* {
-                          hebrewLetterData?.title !== "" && (
-                              <>
-                                  <h2 className="text-2xl font-semibold underline mt-4">Hebrew Letter</h2>
-                                  <p>{hebrewLetterData?.title}</p>
-                                  <p className="text-2xl -mt-1">{hebrewLetterData?.hebrewLetter}</p>
-                              </>
-                          )
-                      } */}
-
+                      <h2 className="text-2xl font-semibold underline mt-4">Effects</h2>
+                      <p><strong>Upright:</strong> {card.uprightEffect}</p>
+                      <p><strong>Reversed:</strong> {card.reversedEffect}</p>
+                      <h2 className="text-2xl font-semibold underline mt-4">Divinatory Meanings</h2>
+                      <ul>
+                          {card.divinatoryMeaning.map((meaning, index) => (
+                              <li key={index}>{meaning}</li>
+                          ))}
+                      </ul>
                       <h2 className="text-2xl font-semibold underline mt-4">Kabalism</h2>
                       <ul>
                         {Object.keys(card.kabalism).map((key) => (
@@ -390,18 +401,6 @@ const TarotCardPage = () => {
 
                           </li>
                         ))}
-                      </ul>
-
-                  </div>
-                  <div>
-                      <h2 className="text-2xl font-semibold underline">Effects</h2>
-                      <p><strong>Upright:</strong> {card.uprightEffect}</p>
-                      <p><strong>Reversed:</strong> {card.reversedEffect}</p>
-                      <h2 className="text-2xl font-semibold underline mt-4">Divinatory Meanings</h2>
-                      <ul>
-                          {card.divinatoryMeaning.map((meaning, index) => (
-                              <li key={index}>{meaning}</li>
-                          ))}
                       </ul>
                   </div>
               </div>
