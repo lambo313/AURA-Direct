@@ -488,12 +488,12 @@ const TarotDeckPage = () => {
             iconColor="text-violet-500"
             bgColor="bg-violet-500/10"
           />
-          <Button 
+          {/* <Button 
           className="flex m-auto" 
-          // onClick={handleAddCards}
+          onClick={handleAddCards}
           >
             Add Cards
-          </Button>
+          </Button> */}
           <div className="px-4 lg:px-8">
             <div className="h-full">
               <TarotDeck
