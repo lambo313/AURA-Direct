@@ -64,7 +64,7 @@ export const GET = async (request: any) => {
         await connectToDB();
         
         // Fetch tarot card data from the database
-        const tarotDeckData = await TarotCard.find().exec();
+        const tarotDeckData = await TarotCard.find().sort({_id: 1 });
 
         // Return the fetched data as a response
         return new Response(JSON.stringify(tarotDeckData), { status: 200 });
