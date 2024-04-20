@@ -45,7 +45,7 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
         if (selectedSpreadValue === "" || selectedTopicValue === "") {
             toast.error("Please select a topic and choose a spread!");
         } else {
-            if (deck.length > 0 && selectedCards.length < 4) {
+            if (deck.length > 0 && selectedCards.length < parseInt(selectedSpreadValue)) {
                 const remainingDeck = deck.filter(card => card !== selectedCard);
                 setDeck(remainingDeck); // Update the deck state with the remaining cards
                 setSelectedCards([...selectedCards, selectedCard]); // Add the dealt card to the selected cards

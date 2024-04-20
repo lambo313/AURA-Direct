@@ -32,29 +32,29 @@ import { Card } from "@/components/ui/card";
 
 // const suits = ["cups", "swords", "pentacles"]
 
-// const suit = 'Swords'
+// const suit = 'Pentacles'
 // const suitLower = suit.toLowerCase()
-// const element = '65fda183eb50bf0b212412a2'
+// const element = '65fdb360eb50bf0b212412a4'
 
 
 // const handleAddCards = async () => {
 //   const cardsToAdd = [
 //     {
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-01-ace.webp",
-//         "cardDescription": "The Ace of Swords shows a hand emerging from the clouds wielding a double-edged sword. This double edged sword carries a golden crown while being encircled by a wreath. The wreath has for a long time been associated with victory, success and great achievement.\n\nThe crown is used as the symbol for both royalty and the power to rule that comes with royalty.\n\nBehind the foreground, the sword stands floating over a varied setting - which holds both mountains and sea, which are used as symbols of the vast reach and distant lands that the swords can be used to conquer, as well as ambition. ",
+//         "cardDescription": "In this card, there is a single mysterious hand that comes out of the clouds. In the hand is what looks like a gold coin with a pentagram engraved on its surface. This pentacle is associated with the element of earth, and seen as a sign of wealth and all things material and earthly. Below the hand is a garden which appears to be flourishing with flowers and other kinds of vegetation - giving off the aura of fertility, growth and prosperity. The mountain represents the ambition required to drive one's search for the pentacle. The flowing creek seem to indicate that emotions are flowing towards this ambition.",
 //         "arcana": "Minor",
 //         "title": "Ace of "+suit,
-//         "reversedEffect": "Inner clarity, re-thinking an idea, clouded judgement",
-//         "uprightEffect": "Breakthroughs, new ideas, mental clarity, success",
+//         "reversedEffect": "Lost opportunity, lack of planning and foresight.",
+//         "uprightEffect": "A new financial or career opportunity, manifestation, abundance.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "clarity",
-//             "breakthrough",
-//             "concentration"
+//             "opportunities",
+//             "resources",
+//             "manifestation"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -65,27 +65,27 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661efa33075c4659d6c3507f",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-02.webp",
-//         "cardDescription": "The Two of Swords symbolizes the confusion we face when we are forced to make difficult choices. In the Two of Swords card, there is a seated woman that is blindfolded while holding a sword in each of her hands. In the background, there is a sea surrounded by crags and rocks that serve as obstacles for vessels and ships, stalling progress and action. The woman in the card being blindfolded is a representation of a situation which prevents her from seeing both the problem and the solution with clarity.\n\nThe swords that she is holding in each of her hands show that there are two choices that lead in different directions and are mutually exclusive to one another. It may also depict a stalemate, which means that the problem should be addressed with a logical and rational thinking. The Moon positioned on the right side of the card signifies may signify the role of illusions and deception in the difficulty that the woman has in making a choice.",
+//         "cardDescription": "The Two of Pentacles card depicts a man who is dancing as he is juggling two large coins. The pentacles are surrounded by the infinity sign that denotes that the person can handle all the issues the come his way and he can manage his life with grace. In the background, you will notice that there are two ships that are riding the giant waves, and they reinforce the balancing act that the man has to face - he is in rough and choppy waters, but manages to stay afloat. The Two of Pentacles depicts the usual ups and downs that occur in one’s life. Despite all the chaos that surrounds him, the man lives a very carefree life as he dances, and handles all that comes to him with joy.",
 //         "arcana": "Minor",
 //         "title": "Two of "+suit,
-//         "reversedEffect": "Indecision, confusion, information overload, stalemate",
-//         "uprightEffect": "Difficult decisions, weighing up options, an impasse, avoidance",
+//         "reversedEffect": "Over-committed, disorganisation, reprioritisation.",
+//         "uprightEffect": "Multiple priorities, time management, prioritisation, adaptability.",
 //         "astroPower": {
         
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd32eeb50bf0b212412bd"
+//                 "65fdd301eb50bf0b212412b9"
 //             ],
 //             "zodiacal": [
-//                 "65fdcb55eb50bf0b212412b2"
+//                 "65fdccfeeb50bf0b212412b5"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "peace",
-//             "tranquility",
-//             "freedom"
+//             "change",
+//             "transformation",
+//             "adaption"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -96,26 +96,26 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f035c075c4659d6c35080",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-03.webp",
-//         "cardDescription": "One of the most iconic images in the tarot, the Three of Swords displays a floating heart that is pierced by three swords. Above it, there are heavy clouds. There is also a heavy downpour in the background. The symbolism is pretty opaque, and the emotional effect that it has is immediate. The heart is the seat of warmth, affection and spirit, and the three swords indicate the power to harm, cause pain, and create suffering to what it pierces. This is an image of grief, loss and literally heartbreak. The clouds and rain depict the surrounding grimness of the situation. All these symbols point to the Three of Swords showing a low point in one's life.",
+//         "cardDescription": "The Three of Pentacles displays a young apprentice who works in a cathedral. In front of him, there are two others, a priest and a nobleman of some sort, that are holding plans of the cathedral on a piece of parchment. We can tell from the way the apprentice has raised his head that he is discussing his progress on building the cathedral. The two others are keenly listening to him in order to more clearly understand what is needed of them and how they can provide guidance. Despite the apprentice being less experienced, the two others listen to him because they know his ideas and his experience are fundamental in the successful completion of the whole building. The Three of Pentacles therefore represents the coming together of different kinds of knowledge in order to build something together.",
 //         "arcana": "Minor",
 //         "title": "Three of "+suit,
-//         "reversedEffect": "Negative self-talk, releasing pain, optimism, forgiveness",
-//         "uprightEffect": "Heartbreak, mental pain, sorrow, grief, hurt",
+//         "reversedEffect": "Disharmony, misalignment, working alone.",
+//         "uprightEffect": "Teamwork, collaboration, learning, implementation.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd2f1eb50bf0b212412b8"
+//                 "65fdd30deb50bf0b212412ba"
 //             ],
 //             "zodiacal": [
-//                 "65fdcb55eb50bf0b212412b2"
+//                 "65fdccfeeb50bf0b212412b5"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "sorrow",
-//             "distress",
-//             "misfortune"
+//             "works",
+//             "mechanism",
+//             "means"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -126,26 +126,26 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f056b075c4659d6c35081",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-04.webp",
-//         "cardDescription": "There is a quiet stillness that is present in the Four of Swords, a sense of calm peace that is contrasted so deeply with the pain in the Three of Swords. Here, in a church, there is a carving of a knight that lies upon a tomb with three swords hanging above him while the fourth one lies beneath him. These three swords are a reminder of the suffering that he has endured in the earlier card. The position of the fourth sword seems to be a signal that the fight has ended. A child and a woman are depicted by the stained glass place behind the statue, giving the scene a sense of warmth and welcoming after the retreat. The knight has his hands positioned as if he is praying.",
+//         "cardDescription": "This card depicts a man who is sitting on a stool, who is holding onto two pentacles in a very defensive and tight posture. It’s almost as if he is hoarding them out of fear of loss. One pentacle is balanced precariously on his head, while another one is tightly clutched between his own hands, and there are two of them which are securely placed underneath his feet. He is making sure that there is absolutely no one touching his coins. At the same time, he is also unable to move because he is holding the coins so tightly. In other words, he is restrained from acting because he is holding too tight to his possessions. To some, money does not always bring freedom.",
 //         "arcana": "Minor",
 //         "title": "Four of "+suit,
-//         "reversedEffect": "Exhaustion, burn-out, deep contemplation, stagnation",
-//         "uprightEffect": "Rest, relaxation, meditation, contemplation, recuperation",
+//         "reversedEffect": "Saving money, security, conservatism, scarcity, control.",
+//         "uprightEffect": "Over-spending, greed, self-protection.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd301eb50bf0b212412b9"
+//                 "65fdd353eb50bf0b212412be"
 //             ],
 //             "zodiacal": [
-//                 "65fdcb55eb50bf0b212412b2"
+//                 "65fdccfeeb50bf0b212412b5"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "luxury",
-//             "confort",
-//             "extravagance"
+//             "power",
+//             "might",
+//             "force"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -156,26 +156,26 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f0691075c4659d6c35082",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-05.webp",
-//         "cardDescription": "The Five of Swords card depicts a young man who has a very convenient look of contempt on his face. He is looking at the enemies that he has managed to conquer. There are five swords that he possesses – which he has taken from the other combatants who are in the card. The two other figures are walking away from him in a slow manner with a sense of loss and sadness. Above them, the sky is tumultuous and cloudy, which indicates that not everything is well, despite the fact that the battle is already over.",
+//         "cardDescription": "Just like the fives of the other suits in the tarot, the Five of Pentacles symbolizes adversity. It shows two individuals walking outside while it is snowing. Not only are they cold, they are also sick, poor, tired, and hungry. It looks as if they are lacking the basic necessities of life. A lot of people can relate to the two individuals in more ways than one.\n\nOne of the individuals in the card has crutches, while the other figure has a shawl covering her head. She is walking barefoot in the snow. There is a black wall in the background with a stained glass window featuring the five pentacles, suggesting a church of some kind.\n\nMore often than not, the Five of Pentacles is a bad omen. However, do not fret, as it can change depending on where it is placed in the reading.",
 //         "arcana": "Minor",
 //         "title": "Five of "+suit,
-//         "reversedEffect": "Reconciliation, making amends, past resentment",
-//         "uprightEffect": "Conflict, disagreements, competition, defeat, winning at all costs",
+//         "reversedEffect": "Recovery from financial loss, spiritual poverty.",
+//         "uprightEffect": "Financial loss, poverty, lack mindset, isolation, worry.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd315eb50bf0b212412bb"
+//                 "65fdd320eb50bf0b212412bc"
 //             ],
 //             "zodiacal": [
-//                 "65fdb8f9eb50bf0b212412a8"
+//                 "65fdc938eb50bf0b212412ad"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "defeat",
-//             "overcome",
-//             "subdue"
+//             "worry",
+//             "unease",
+//             "anxiety"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -186,25 +186,25 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f0ea0075c4659d6c35083",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-06.webp",
-//         "cardDescription": "The image in the Six of Swords shows a woman and a child in a boat being rowed in the water to a land that is on the other side. We can gather from the images that the woman and the child are leaving something behind, as their backs are faced towards us. The woman's head is covered with a cloak - perhaps she is fleeing something, and must go without others knowing her true identity. We can assume that because of this, she is undergoing great loss or sadness. The symbolism within the Six of Swords is that of loss or change, as well as moving towards a future that looks more promising than the one that we left behind. The six swords alongside the boat symbolize the strong power of the rational mind, compared to intuition and the heart.",
+//         "cardDescription": "In the image on the Six of Pentacles, there is a man who is dressed in purple robes. The color purple symbolizes is the status and wealth of this man. He has a scale that is balanced in one hand, which stands for equality and fairness. We are reminded of the Justice tarot card, which suggests karma, cause and effect, and that we receive what we give. His other hand is giving money to two beggars who are kneeling at his feet. The Six of Pentacles suggests that you are in a secure enough position to give to others without affecting your own stability.",
 //         "arcana": "Minor",
 //         "title": "Six of "+suit,
-//         "reversedEffect": "Personal transition, resistance to change, unfinished business",
-//         "uprightEffect": "Transition, change, rite of passage, releasing baggage.",
+//         "reversedEffect": "Self-care, unpaid debts, one-sided charity.",
+//         "uprightEffect": "Giving, receiving, sharing wealth, generosity, charity.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd320eb50bf0b212412bc"
+//                 "65fdd32eeb50bf0b212412bd"
 //             ],
 //             "zodiacal": [
-//                 "65fdb8f9eb50bf0b212412a8"
+//                 "65fdc938eb50bf0b212412ad"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "science",
-//             "configuration",
+//             "success",
+//             "fruition",
 //             "arrangement"
 //         ],
 //         "kabalism": {
@@ -216,26 +216,26 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f1087075c4659d6c35084",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-07.webp",
-//         "cardDescription": "In the Seven of Swords card, there is a man that is seen running away sneakily from a camp of some sort, while carrying five swords in his hands. Behind him, two other swords are on standing on the ground. From this image, we can deduce that the Seven of Swords is about stealth, getting away with something, deception or betrayal.\n\nThe expression on the man’s face shows quite a bit of confidence, and he seems to be sure of his success on this mission of stealing the swords. Unfortunately for him though, on the left there seems to be a group of soldiers who have discovered the theft and one soldier is actually raising a flag or a weapon as if to signal his pursuit.",
+//         "cardDescription": "The Seven of Pentacles shows a young man who seems to be taking a break from his hard labor to admire the fruit and blossoms in his garden. He rests on his shovel as he is admiring the seven pentacles hanging from the lush green vegetation. The way that he is laying his head over hands seems to suggest a kind of fatigue - he has worked hard to make sure that this year's crop is a good one. Because he is focused on long term goals, he cannot touch his harvest right now, and only reserves one of the pentacles for himself, choosing to invest the others. With his efforts, he hopes to grow his crop for the long term. ",
 //         "arcana": "Minor",
 //         "title": "Seven of "+suit,
-//         "reversedEffect": "Imposter syndrome, self-deceit, keeping secrets",
-//         "uprightEffect": "Betrayal, deception, getting away with something, acting strategically",
+//         "reversedEffect": "Lack of long-term vision, limited success or reward.",
+//         "uprightEffect": "Long-term view, sustainable results, perseverance, investment.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd32eeb50bf0b212412bd"
+//                 "65fdd2f1eb50bf0b212412b8"
 //             ],
 //             "zodiacal": [
-//                 "65fdb8f9eb50bf0b212412a8"
+//                 "65fdc938eb50bf0b212412ad"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "futility",
-//             "uselessness",
-//             "ineffectiveness"
+//             "failure",
+//             "omission",
+//             "cessation"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -246,26 +246,26 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f1328075c4659d6c35085",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-08.webp",
-//         "cardDescription": "On the Eight of Swords is a woman who is tied up and blindfolded. There are eight swords placed strategically around her in a way that restricts her movement as though she is in some kind of trap or jail. However, it seems as though whoever built the trap was a little lazy or hasty, leaving some open space where she could escape. But because of the blindfold preventing the woman from seeing, she has no way of finding her way out of this trap. The barren land around her might signify a lack of creativity of some sort, while the grey sky in the background can signify despair, since there she feels that there is no hope of her breaking free from the kind of situation that she is bound to. If only she could take the blindfold off, she would see that she could simply just walk out of this situation.",
+//         "cardDescription": "The Eight of Pentacles card depicts a young man who is etching a pentacle shape into the eight golden coins. The card symbolizes someone who is completely focused and absorbed in what they are doing. The town that is far in the background means that he successfully isolated himself from the distractions so that he can fully concentrate on his task. The Eight of Pentacles refers to that moments in your life when you are dedicated to completing a certain task. You are fully-immersed, and you are committed in delivering the best version of your work.",
 //         "arcana": "Minor",
 //         "title": "Eight of "+suit,
-//         "reversedEffect": "Self-limiting beliefs, inner critic, releasing negative thoughts, open to new perspectives",
-//         "uprightEffect": "Negative thoughts, self-imposed restriction, imprisonment, victim mentality",
+//         "reversedEffect": "Self-development, perfectionism, misdirected activity.",
+//         "uprightEffect": "Apprenticeship, repetitive tasks, mastery, skill development.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd301eb50bf0b212412b9"
+//                 "65fdd353eb50bf0b212412be"
 //             ],
 //             "zodiacal": [
-//                 "65fdc97aeb50bf0b212412ae"
+//                 "65fdcad3eb50bf0b212412b1"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "interference",
-//             "invasion",
-//             "poaching"
+//             "prudence",
+//             "discipline",
+//             "shrewness"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -276,26 +276,26 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f147f075c4659d6c35086",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-09.webp",
-//         "cardDescription": "The Nine of Swords depicts a woman that is sitting on her bed while she holds her head in her hands. It appears as though the woman has just awakened from a very bad nightmare. She seems to be upset, anxious and fearful. Nine swords are hanging on her wall, and a carving that depicts a person defeated by another can be found in her bed. The quilt has been decorated with various astrological symbols and roses. Here we see the same woman in that we saw earlier in the Eight of Swords - and perhaps, she was finally released, but haunted by the nightmares of the suffering she endured while she was left and deserted.",
+//         "cardDescription": "The Nine of Pentacles depicts a woman in the middle of a vineyard. The woman wears what appears to be a long, luxurious dress adorned with sunflowers. She seems to be part of a wealthy house, for in the far background, we see a castle. A falcon is sitting peacefully and playfully on her left hand. The vines behind her are rich and filled with grapes and golden coins, signaling that she has been very successful in her ventures, which are yielding a great and plentiful harvest.",
 //         "arcana": "Minor",
 //         "title": "Nine of "+suit,
-//         "reversedEffect": "Inner turmoil, deep-seated fears, secrets, releasing worry",
-//         "uprightEffect": "Anxiety, worry, fear, depression, nightmares",
+//         "reversedEffect": "Abundance, luxury, self-sufficiency, financial independence.",
+//         "uprightEffect": "Self-worth, over-investment in work, hustling.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd30deb50bf0b212412ba"
+//                 "65fdd315eb50bf0b212412bb"
 //             ],
 //             "zodiacal": [
-//                 "65fdc97aeb50bf0b212412ae"
+//                 "65fdcad3eb50bf0b212412b1"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "cruelty",
-//             "suffering",
-//             "pain"
+//             "gain",
+//             "obtain",
+//             "increase"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -306,26 +306,26 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f15d5075c4659d6c35087",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-10.webp",
-//         "cardDescription": "Another one of the most striking and ominous cards in the deck, the Ten of Swords shows a man lying flat on the ground with his face facing the dirt. He is covered with a red cloth from the chest down to his legs. Ten long swords are stabbed into his back, he may not have seen this end coming. There is a terrible stillness in the air: the sky above him is black and cloudy indicating the fear and negativity associated with death. The waters in front of him are still, with no ripples - adding to the eerie stillness and finality of this card. Looking into the horizon, in the east, the sun is rising, and the weather seems very calm despite the darkness. The Ten of Swords seems to intimate that this is the lowest point in one's life, and it cannot get worse than this. At least, even in this state, the sun is rising.\n",
+//         "cardDescription": "In the Ten of Pentacles card, there is an old man seated in an archway leading into a great estate. It seems he is the head of the family, for he is surrounded by younger loved ones. He wears a robe that is decorated with moon crescents and grapevines - indicating the joining of spirit and matter. He has his family and dogs with him. There is a happy couple in front of him, presumably his children and a playful child behind this couple, his grandchild. The child playfully reaches out to pet the dog.",
 //         "arcana": "Minor",
 //         "title": "Ten of "+suit,
-//         "reversedEffect": "Recovery, regeneration, resisting an inevitable end",
-//         "uprightEffect": "Painful endings, deep wounds, betrayal, loss, crisis",
+//         "reversedEffect": "The dark side of wealth, financial failure or loss.",
+//         "uprightEffect": "Wealth, financial security, family, long-term success, contribution.",
 //         "astroPower": {
 //             "elemental": [
 //                 element
 //             ],
 //             "planetary": [
-//                 "65fdd353eb50bf0b212412be"
+//                 "65fdd320eb50bf0b212412bc"
 //             ],
 //             "zodiacal": [
-//                 "65fdc97aeb50bf0b212412ae"
+//                 "65fdcad3eb50bf0b212412b1"
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "ruin",
-//             "disintegration",
-//             "decay"
+//             "wealth",
+//             "abundance",
+//             "prosperity"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -336,24 +336,24 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f22c1075c4659d6c35088",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-11-page.webp",
-//         "cardDescription": "The Page of Swords card is representative of a person in one's life who shows an abundance of energy. With wind-blown trees, turbulent clouds and the their tossed hair, a youth stands proudly on a rocky precipice. This energetic youth has a sword in her hands. Her expression is one of determination, and perhaps a little bit of defiance - she seems ready to pounce at the slightest word.",
+//         "cardDescription": "The Page of Pentacles card depicts a youth standing all by himself in a wide field surrounded by flowers. In the background, you will also notice several lush trees and a furrowed field. The young man seems to be walking in a slow manner and appears unaware of his surroundings, for his attention is completely captured by the coin he is holding, and all that it represents: ambition, security, wealth, nature, and sensuality. The Page of Pentacles symbolizes a person who is grounded, loyal and diligent.",
 //         "arcana": "Minor",
 //         "title": "Page of "+suit,
-//         "reversedEffect": "Self-expression, all talk and no action, haphazard action, haste",
-//         "uprightEffect": "New ideas, curiosity, thirst for knowledge, new ways of communicating",
+//         "reversedEffect": "Lack of progress, procrastination, learn from failure.",
+//         "uprightEffect": "Manifesting, financial opportunity, skill development.",
 //         "astroPower": {
 //             "mainElement": [
 //                 element
 //             ],
 //             "seasonality": [
-//                 "Winter"
+//                 "Spring"
 //             ],
 //             "minorElement": "65fdb360eb50bf0b212412a4"
 //         },
 //         "divinatoryMeaning": [
-//             "curiosity",
-//             "restlessness",
-//             "mental energy"
+//             "diligent",
+//             "planner",
+//             "grounded"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -364,11 +364,11 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f25f1075c4659d6c35089",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-12-knight.webp",
-//         "cardDescription": "What a rush we see this Knight in! The Knight of Swords card depicts a young man who is dressed in his armor and rides a strong white horse into the midst of a battle. The white color of his horse is a reference to the overall purity and intellectual energy which motivates this young rider. The sky behind him holds stormy clouds as well as trees which are tossed wildly around by the strong winds. The horse’s harness is also decorated with images of birds and butterflies. The cape of the knight is also decorated with those same birds.\n\n",
+//         "cardDescription": "Much like the other court cards of this suit, the Knight of Pentacles revolves around work, effort, and a general responsibility. The Knight of Pentacles sits on a dark horse in a field. Unlike the other knights, who are always off on one adventure or another, this knight decides to stay home, and instead, focus on tilling the fields. He prepares for the next harvest - it is on this land that he believes that he can do the most. In his hands, he has a single gold coin. He gazes into it, and in his eyes we see a careful consideration. Perhaps he is dreaming of what it could bring him. The other knights may think he's a little boring, but this knight is more concerned about the long term future of his kingdom.\n\n",
 //         "arcana": "Minor",
 //         "title": "Knight of "+suit,
-//         "reversedEffect": "Restless, unfocused, impulsive, burn-out",
-//         "uprightEffect": "Ambitious, action-oriented, driven to succeed, fast-thinking",
+//         "reversedEffect": "Self-discipline, boredom, feeling ‘stuck’, perfectionism.",
+//         "uprightEffect": "Hard work, productivity, routine, conservatism.",
 //         "astroPower": {
 //             "mainElement": [
 //                 element
@@ -378,9 +378,9 @@ import { Card } from "@/components/ui/card";
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "assertive",
-//             "direct",
-//             "daring"
+//             "reliable",
+//             "efficient",
+//             "stoic"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -391,11 +391,11 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f288e075c4659d6c3508a",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-13-queen.webp",
-//         "cardDescription": "The Queen of Swords wears a stern look as she sits high on the throne - looking off into the distance. A queen of the air element that the swords represents, her place in the clouds shows that no one can trick or fool her. The sword in her right hand is pointed towards the sky, whereas the left hand is extended like it is offering something. The Queen of Swords gives us the gift of judgment for everyday decisions and having the flexibility to take in knowledge from others.\n\n",
+//         "cardDescription": "The Queen of Pentacles card depicts a beautiful woman sitting on a decorated throne holding a golden coin. Surrounding her are beautiful blossoming trees and green floral gardens. Her throne is decorated with various beasts of the earth, tying her closely with nature and abundance. At the bottom of the card, on the right-hand side, a rabbit is pouncing into the frame, which symbolizes her high energy and fertility. The Queen of Pentacles, therefore, depicts a certain level of success and prosperity. But the rabbit at the bottom cautions us that we should be careful of where we leap when we are chasing that success.\n\n",
 //         "arcana": "Minor",
 //         "title": "Queen of "+suit,
-//         "reversedEffect": "Overly-emotional, easily influenced, bitchy, cold-hearted",
-//         "uprightEffect": "Independent, unbiased judgement, clear boundaries, direct communication",
+//         "reversedEffect": "Financial independence, self-care, work-home conflict.",
+//         "uprightEffect": "Nurturing, practical, providing financially, a working parent.",
 //         "astroPower": {
 //             "mainElement": [
 //                 element
@@ -405,9 +405,9 @@ import { Card } from "@/components/ui/card";
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "honest",
-//             "independent",
-//             "principled"
+//             "practicality",
+//             "usefulness",
+//             "convenience"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [
@@ -418,11 +418,11 @@ import { Card } from "@/components/ui/card";
 //     {
 //         // "_id": "661f2bc8075c4659d6c3508b",
 //         "cardImage": "/images/minor-arcana/"+suitLower+"/"+suitLower+"-14-king.webp",
-//         "cardDescription": "The King of Swords tarot card shows a king who sits on his throne while holding a double-edged sword that points upwards in his right hand. The King of Swords radiates intellectual power, clear thinking, truth, and authority. He understands that power holds great responsibility.\n\nThe blue tunic that the king wears is a symbol of his spiritual understanding. The butterflies on the back of his throne are indicative of transformation.",
+//         "cardDescription": "The King of Pentacles refers to a man of high ambition, materialistic satisfaction, and worldly success. The King of Pentacles is sitting on a throne that is adorned with vines and bull carvings, and the robe that he is wearing is embroidered with many images of grapevines. He looks sophisticated and regal. He is also surrounded by different types of plants, vines, and flowers which depicts this king’s attainment of materialistic success. He holds a scepter in his right hand and the coin with a pentacles engraved on it in his left hand. The castle can be seen behind him, which is a symbol of his determination and effort.",
 //         "arcana": "Minor",
 //         "title": "King of "+suit,
-//         "reversedEffect": "Quiet power, inner truth, misuse of power, manipulation",
-//         "uprightEffect": "Mental clarity, intellectual power, authority, truth",
+//         "reversedEffect": "Financially inept, obsessed with wealth and status, stubborn.",
+//         "uprightEffect": "Wealth, business, leadership, security, discipline, abundance.",
 //         "astroPower": {
 //             "mainElement": [
 //                 element
@@ -432,9 +432,9 @@ import { Card } from "@/components/ui/card";
 //             ]
 //         },
 //         "divinatoryMeaning": [
-//             "reason",
-//             "discipline",
-//             "integrity"
+//             "security",
+//             "protection",
+//             "unexposed"
 //         ],
 //         "kabalism": {
 //             "treeOfLifePath": [

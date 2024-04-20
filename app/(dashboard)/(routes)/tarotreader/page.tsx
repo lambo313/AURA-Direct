@@ -209,7 +209,7 @@ useEffect(() => {
     <div className="pb-4">
         <Heading
           title="Tarot Reader"
-          description="Generate AI tarot readings."
+          description="Generate tarot readings using AURA."
           icon={View}
           iconColor="text-green-700"
           bgColor="bg-green-700/10"

@@ -25,7 +25,7 @@ export const increaseApiLimit = async () => {
             userApiLimit.createdAt = userApiLimit.createdAt
             await userApiLimit.save();
         } else {
-            await UserApiLimit.create({ id, userId, count: 1 });
+            await UserApiLimit.create({ userId, count: 1 });
         }
     } catch (error) {
         console.error("Error increasing API limit:", error);

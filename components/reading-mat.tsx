@@ -21,7 +21,7 @@ const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCli
     return (
         <div className="glassmorphism flex flex-row justify-center gap-4 mb-2">
             {cards.map((card, index) => (
-                <div key={index} className="flex flex-col items-center">
+                <div key={index} className="items-center mx-auto max-w-max w-full">
                     {/* <TarotCard
                         key={card._id}
                         tarotCard={card}
@@ -30,7 +30,7 @@ const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCli
                         handleDelete={() => {}}
                         onCardClick={onCardClick} // Pass onCardClick handler
                     /> */}
-                    <Image src={card.cardImage} alt={card.title} width={0} height={0} sizes="100vw" className="w-full max-w-sm h-auto bg-transparent object-cover cursor-pointer" onClick={() => handleCardClick(card._id)} />
+                    <Image src={card.cardImage} alt={card.title} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} className="w-full max-w-sm h-auto bg-transparent object-cover cursor-pointer" onClick={() => handleCardClick(card._id)} />
 
                     <p className="text-center">{positions[index]}</p>
                     {/* <button onClick={() => onCardRemove(index)} className="mt-2 bg-red-500 text-white px-2 py-1 rounded">Remove</button> */}

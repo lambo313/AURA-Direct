@@ -1,7 +1,6 @@
 import { Schema, model, models, Document, SchemaTypes } from 'mongoose';
 
 interface IUserApiLimit extends Document {
-  id: string;
   userId: string;
   count: number;
   createdAt: Date;
@@ -9,12 +8,6 @@ interface IUserApiLimit extends Document {
 }
 
 const UserApiLimitSchema = new Schema<IUserApiLimit>({
-  id: {
-    type: String,
-    required: true,
-    index: true,
-    unique: true,
-  },
   userId: {
     type: String,
     required: true,

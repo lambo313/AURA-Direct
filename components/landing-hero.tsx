@@ -29,7 +29,7 @@ export const LandingHero = () => {
             </div>
         </div>
         <div className="text-sm md:text-xl font-light text-zinc-400">
-          Create instant AI tarot readings.
+          Create instant tarot readings using AI.
         </div>
         <div>
           <Link href={isSignedIn ? "/dashboard" : "/sign-up"}> 

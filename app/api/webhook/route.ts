@@ -40,7 +40,6 @@ export async function POST(req: Request) {
             await connectToDB();
             
             await UserSubscription.create({
-                id: session?.metadata?.userId,
                 userId: session?.metadata?.userId,
                 stripeSubscriptionId: subscription.id,
                 stripeCustomerId: subscription.customer as string,

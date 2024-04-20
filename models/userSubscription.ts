@@ -1,7 +1,6 @@
 import { Schema, model, models, Document, SchemaTypes } from 'mongoose';
 
 interface IUserSubscription extends Document{
-  id: string;
   userId: string;
   stripeCustomerId?: string;
   stripeSubscriptionId?: string;
@@ -11,12 +10,6 @@ interface IUserSubscription extends Document{
 
 
 const UserSubscriptionSchema = new Schema<IUserSubscription>({
-  id: {
-    type: String,
-    required: true,
-    index: true,
-    unique: true,
-  },
   userId: {
     type: String,
     required: true,
