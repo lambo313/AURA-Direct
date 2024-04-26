@@ -28,10 +28,10 @@ export function SpreadCombobox({ onSelect }: { onSelect: (value: string) => void
       value: "1-Card",
       label: "1-Card",
     },
-    // {
-    //   value: "Celtic",
-    //   label: "Celtic",
-    // },
+    {
+      value: "Celtic-Cross",
+      label: "Celtic-Cross",
+    },
     // {
     //   value: "1-Card(w/clarifier)",
     //   label: "1-Card(w/clarifier)",
@@ -41,8 +41,8 @@ export function SpreadCombobox({ onSelect }: { onSelect: (value: string) => void
     //   label: "4-Card(w/clarifiers)",
     // },
     // {
-    //   value: "Celtic(w/clarifiers)",
-    //   label: "Celtic(w/clarifiers)",
+    //   value: "Celtic-Cross(w/clarifiers)",
+    //   label: "Celtic-Cross(w/clarifiers)",
     // }
   ];
 

@@ -31,7 +31,7 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
 
 
     const handleCardSelect = (value: string) => {
-        console.log("Card Selected!: ", value);
+        // console.log("Card Selected!: ", value);
         const selectedCard = deck.find(card => card.title === value);
         if (selectedCard) {
             dealSelectedCard(selectedCard);
@@ -41,19 +41,33 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
     };
 
     const dealSelectedCard = (selectedCard: ITarotCard) => {
-        console.log("Dealing selected card:", selectedCard);
+        // console.log("Dealing selected card:", selectedCard);
         if (selectedSpreadValue === "" || selectedTopicValue === "") {
             toast.error("Please select a topic and choose a spread!");
         } else {
-            if (deck.length > 0 && selectedCards.length < parseInt(selectedSpreadValue)) {
-                const remainingDeck = deck.filter(card => card !== selectedCard);
-                setDeck(remainingDeck); // Update the deck state with the remaining cards
-                setSelectedCards([...selectedCards, selectedCard]); // Add the dealt card to the selected cards
-                onDeal([...selectedCards, selectedCard]); // Call the onDeal callback function with the dealt card
-            } else if (deck.length === 0) {
-                toast.error("No Cards Left in the Deck!");
+            if (selectedSpreadValue === "Celtic-Cross") {
+                if (deck.length > 0 && selectedCards.length < 10) {
+                    const remainingDeck = deck.filter(card => card !== selectedCard);
+                    setDeck(remainingDeck); // Update the deck state with the remaining cards
+                    setSelectedCards([...selectedCards, selectedCard]); // Add the dealt card to the selected cards
+                    onDeal([...selectedCards, selectedCard]); // Call the onDeal callback function with the dealt card
+                } else if (deck.length === 0) {
+                    toast.error("No Cards Left in the Deck!");
+                } else {
+                    toast.error("Max Cards Dealt!");
+                }
+
             } else {
-                toast.error("Max Cards Dealt!");
+                if (deck.length > 0 && selectedCards.length < parseInt(selectedSpreadValue)) {
+                    const remainingDeck = deck.filter(card => card !== selectedCard);
+                    setDeck(remainingDeck); // Update the deck state with the remaining cards
+                    setSelectedCards([...selectedCards, selectedCard]); // Add the dealt card to the selected cards
+                    onDeal([...selectedCards, selectedCard]); // Call the onDeal callback function with the dealt card
+                } else if (deck.length === 0) {
+                    toast.error("No Cards Left in the Deck!");
+                } else {
+                    toast.error("Max Cards Dealt!");
+                }
             }
         }
     };
@@ -129,9 +143,9 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
             toast.error("Please select a topic and choose a spread!");
         } else {
             const dealCard = () => {
-            console.log("Card Dealt"); // Replace this with the actual logic for dealing a card
-            console.log("Deck length:", deck.length);
-            console.log("Selected cards length:", selectedCards.length);
+            // console.log("Card Dealt"); // Replace this with the actual logic for dealing a card
+            // console.log("Deck length:", deck.length);
+            // console.log("Selected cards length:", selectedCards.length);
             if (selectedSpreadValue == "4-Card") {  
                 if (deck.length > 0 && selectedCards.length < 4) {
                     // console.log("Dealt Cards Pile: ", deck);
@@ -154,6 +168,27 @@ const TarotReader: React.FC<Props> = ({ tarotDeck, onDeal, onTopicChange, onSpre
                 }
             }  else if (selectedSpreadValue == "1-Card") {
                 if (deck.length > 0 && selectedCards.length < 1) {
+                    // console.log("Dealt Cards Pile: ", deck);
+                    // console.log("dealing!!!");
+                    
+                    // Deal one card from the deck using dealCards function
+                    const { dealtCard, remainingDeck } = dealCards(deck, 1);
+                    
+                    setDeck(remainingDeck); // Update the deck state with the remaining cards
+                    setSelectedCards([...selectedCards, ...dealtCard]); // Add the dealt card to the selected cards
+                    onDeal([...selectedCards, ...dealtCard]); // Call the onDeal callback function with the dealt card
+                    // console.log("Dealt Card: ", dealtCard);
+                    // console.log("Previous Cards Dealt: ", selectedCards);
+                } else if (deck.length === 0) {
+                    // console.log("No Cards Left in the Deck!");
+                toast.error("No Cards Left in the Deck!");
+                } else {
+                    // console.log("Max Cards Dealt!");
+                    toast.error("Max Cards Dealt!");
+                }
+            }
+            else if (selectedSpreadValue == "Celtic-Cross") {
+                if (deck.length > 0 && selectedCards.length < 10) {
                     // console.log("Dealt Cards Pile: ", deck);
                     // console.log("dealing!!!");
                     

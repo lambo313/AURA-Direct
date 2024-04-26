@@ -14,6 +14,7 @@ import ReactMarkdown from "react-markdown";
 import { ITarotCard } from "@/models/TarotCards";
 import { ITarotReadingDocument } from "@/models/tarotReading";
 import ReadingMat from "@/components/reading-mat";
+import ReadingMat2 from '@/components/reading-mat2';
 import { ObjectId } from "mongoose";
 import { string } from "zod";
 import { useRouter } from "next/navigation"
@@ -162,12 +163,22 @@ const TarotReadingPage = () => {
 
                 {/* Dealt Cards Section */}
                 <div className="h-full">
+                {(reading.spread === '1-Card' || reading.spread === '4-Card') &&  (
                   <ReadingMat
                     cards={cards} // Assuming dealtCards is a property of the reading object
                     onCardRemove={handleCardRemove}
                     positions={['']}
                     onCardClick={handleTarotCardClick}
                   />
+                )}
+                {reading.spread === 'Celtic-Cross' && (
+                  <ReadingMat2
+                      cards={cards}
+                      onCardRemove={handleCardRemove}
+                      positions={[]}
+                      onCardClick={handleTarotCardClick}
+                  />
+                  )}
                 </div>
 
                 {/* Message Content Section */}

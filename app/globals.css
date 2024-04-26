@@ -223,3 +223,10 @@ body,
   box-shadow: 2px 0px 4px rgba(0, 0, 128, 0.5); /* Adjust the values as needed */
 }
 
+.top-row {
+  align-self: flex-end; /* Push items in the top row down */
+}
+
+.bottom-row {
+  align-self: flex-start; /* Push items in the bottom row up */
+}

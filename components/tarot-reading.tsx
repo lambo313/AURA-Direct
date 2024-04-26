@@ -3,6 +3,7 @@ import ReadingMat from './reading-mat';
 import TarotReader from './tarot-reader';
 import { ITarotCard } from "@/models/TarotCards";;
 import { useRouter } from "next/navigation"
+import ReadingMat2 from './reading-mat2';
 
 
 interface TarotReadingProps {
@@ -31,12 +32,13 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
         setIsMounted(false);
         };
     }, []);
-
+    
+    console.log('is mounted?: ', isMounted)
+    
     const handleTopicSelect = (value: string) => {
         setSelectedTopicValue(value);
         onTopicChange(value);
-        console.log('is mounted?: ', isMounted)
-      };
+    };
     
       const handleSpreadSelect = (value: string) => {
         setSelectedSpreadValue(value);
@@ -50,6 +52,9 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
         } else if (selectedSpreadValue === "1-Card") {
             // If it's a single card spread, you might not need a position, or you might want to label it differently like "Insight"
             setPositions(["Insight"]); // Changed "*" to "Insight" for clarity, adjust as needed
+        } else if (selectedSpreadValue === "Celtic-Cross") {
+            // If it's a single card spread, you might not need a position, or you might want to label it differently like "Insight"
+            setPositions(["Insight1","Insight2","Insight3","Insight4","Insight5","Insight6","Insight7","Insight8","Insight9","Insight10"]); // Changed "*" to "Insight" for clarity, adjust as needed
         }
         // Add any other else if conditions for different spreads here
     }, [selectedSpreadValue]); // Make sure to include selectedSpreadValue in the dependency array
@@ -107,12 +112,22 @@ const TarotReading: React.FC<TarotReadingProps> = ({ onDealtCardsChange, onTopic
                     onSpreadChange={handleSpreadSelect}
                 />
             </div>
+            {(selectedSpreadValue === '1-Card' || selectedSpreadValue === '4-Card') &&  (
             <ReadingMat
                 cards={dealtCards}
                 onCardRemove={handleCardRemove}
                 positions={positions}
                 onCardClick={handleTarotCardClick}
             />
+            )}
+            {selectedSpreadValue === 'Celtic-Cross' && (
+            <ReadingMat2
+                cards={dealtCards}
+                onCardRemove={handleCardRemove}
+                positions={[]}
+                onCardClick={handleTarotCardClick}
+            />
+            )}
         </div>
         )}
     </>
