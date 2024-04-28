@@ -46,7 +46,26 @@ export const GET = async (request: NextRequest) => {
       return new Response(JSON.stringify(savedReadingsData), { status: 200 });
   } catch (error) {
       // Handle errors
-      console.error("Failed to fetch tarot cards:", error);
-      return new Response("Failed to fetch tarot cards", { status: 500 });
+      console.error("Failed to fetch tarot readings:", error);
+      return new Response("Failed to fetch tarot readings", { status: 500 });
   }
 };
+
+// export const DELETE = async (request: NextRequest) => {
+//   try {
+//       // Connect to the database
+//       await connectToDB();
+
+//       const { userId } = await auth();
+      
+//       // Fetch tarot card data from the database
+//       const savedReadingsData = await TarotReading.deleteOne({ userId: userId }).exec();
+
+//       // Return the fetched data as a response
+//       return new Response(JSON.stringify(savedReadingsData), { status: 200 });
+//   } catch (error) {
+//       // Handle errors
+//       console.error("Failed to delete tarot reading:", error);
+//       return new Response("Failed to delete tarot reading", { status: 500 });
+//   }
+// };

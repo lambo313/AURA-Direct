@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation'
 import { Heading } from "@/components/heading";
-import { File } from "lucide-react";
+import { File, CircleEllipsis, Trash2} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
@@ -22,7 +22,26 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
+
 import { Form, FormControl, FormField, FormItem, FormDescription,  FormLabel, FormMessage,} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 
 const formSchema2 = z.object({
   title: z.string().optional(),
@@ -133,6 +152,27 @@ const TarotReadingPage = () => {
       router.push(`/tarotdeck/tarotcard/?id=${card}`);
     }
   };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`/api/deleteSavedReadings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({id: id}),
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch saved reading: ${response.status}`);
+      }
+
+      const deletedReading = await response.json(); 
+     
+      router.push(`/savedreadings`);
+    } catch (error) {
+      console.error("Error deleting saved reading:", error);
+    }
+  };
   
 
   if (!reading) {
@@ -160,6 +200,40 @@ const TarotReadingPage = () => {
                 <div className="font-light text-center">
                   {new Date(reading.readingDate).toLocaleString()}
                 </div>
+                {/* <DropdownMenu>
+                  <DropdownMenuTrigger className="flex m-auto">
+                  <CircleEllipsis/>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem
+                    > */}
+                    
+                      <Dialog>
+                        <DialogTrigger className="flex m-auto"
+                        >
+                          <Trash2/>
+                        </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Are you absolutely sure?</DialogTitle>
+                              <DialogDescription className="flex flex-col">
+                                This action cannot be undone. This will permanently delete the current
+                                reading. 
+                                <Button 
+                                variant={"destructive"} 
+                                className="w-1/2 m-auto mt-4"
+                                onClick={handleDelete}
+                                >
+                                  Delete
+                                </Button>
+                                
+                              </DialogDescription>
+                            </DialogHeader>
+                          </DialogContent>
+                        </Dialog>
+                      {/* </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu> */}
 
                 {/* Dealt Cards Section */}
                 <div className="h-full">
