@@ -1,18 +1,17 @@
 "use client"
 
 import React, { useState, useRef, useEffect } from "react";
-import  TarotCard, { ITarotCard } from "@/models/TarotCards";
+import TarotCard, { ITarotCard } from "@/models/TarotCards";
 import Image from 'next/image';
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-  } from "@/components/ui/tooltip"
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
 
 interface Props {
     cards: ITarotCard[];
@@ -22,7 +21,7 @@ interface Props {
 }
 
 
-const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardClick}) => {
+const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardClick }) => {
     const [selected, setSelected] = useState<ITarotCard | null>(null);
     const [lastSelected, setLastSelected] = useState<ITarotCard | null>(null);
 
@@ -34,7 +33,7 @@ const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCli
 
     const handleCardClick = (cardId: string) => {
         // console.log(cardId);
-        onCardClick(cardId); 
+        onCardClick(cardId);
     };
     const SelectedCard = ({ selected, onCollapse }: { selected: ITarotCard | null, onCollapse: () => void }) => {
         const [isCollapsed, setIsCollapsed] = useState(false);
@@ -50,50 +49,48 @@ const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCli
             onCollapse(); // Callback to notify parent component
         };
 
-        function CardDetailsTooltip() {
+        function CardDetailsPopover() {
             return (
-            <TooltipProvider>
-                <Tooltip>
-                <TooltipTrigger asChild>
-                    <Button
-                        // variant="outline"
-                        className="shadow-custom-golden text-black"
+                <Popover>
+                    <PopoverTrigger asChild>
+                        <Button
+                            // variant="outline"
+                            className="shadow-custom-golden text-black"
                         // onClick={() => handleCardClick(selected?._id)}
                         >
                             ?
                         </Button>
-                </TooltipTrigger>
-                <TooltipContent className="w-3/4 max-w-[512px] m-auto">
-                    <div className="">
-                        <div className="flex flex-row justify-between cursor-pointer"
-                            onClick={() => handleCardClick(selected?._id)}
-                        >
+                    </PopoverTrigger>
+                    <PopoverContent className="w-3/4 max-w-[512px] m-auto">
+                        <div className="">
+                            <div className="flex flex-row justify-between cursor-pointer"
+                                onClick={() => handleCardClick(selected?._id)}
+                            >
+                                <p
+                                ><strong>
+
+                                        {selected?.title.toLocaleUpperCase()}
+                                    </strong>
+                                </p>
+                                <p>
+                                    <strong>
+                                        {"->"}
+
+                                    </strong>
+                                </p>
+                            </div>
+                            <Separator className="my-1" />
                             <p
-                            ><strong>
-
-                            {selected?.title.toLocaleUpperCase()}
-                            </strong>
+                            ><strong>Upright Effect: </strong>
+                                {selected?.uprightEffect}
                             </p>
-                            <p>
-                                <strong>
-                            {"->"}
-
-                                </strong>
+                            <p
+                            ><strong>Reverse Effect: </strong>
+                                {selected?.reversedEffect}
                             </p>
                         </div>
-                        <Separator className="my-1"/>
-                        <p
-                        ><strong>Upright Effect: </strong>
-                        {selected?.uprightEffect}
-                        </p>
-                        <p
-                        ><strong>Reverse Effect: </strong>
-                        {selected?.reversedEffect}
-                        </p>
-                    </div>
-                </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
+                    </PopoverContent>
+                </Popover>
             )
         }
 
@@ -137,13 +134,13 @@ const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCli
                         maxHeight: '480px'
                     }}
                 >
-                
+
                     {/* <p>{selected?.cardDescription}</p> */}
-                   
+
                     <div className="flex justify-center items-end relative top-[102%]">
-                        <CardDetailsTooltip/>
+                        <CardDetailsPopover />
                     </div>
-                 
+
                 </motion.div>
             </div>
         );
@@ -162,18 +159,18 @@ const ReadingMat: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCli
                         onCardClick={onCardClick} // Pass onCardClick handler
                     /> */}
                     <motion.div
-                                onClick={() => handleClick(card)}
-                                className={cn(
-                                    card.title,
-                                    "",
-                                    selected?.id === card.id
-                                        ? ""
-                                        : lastSelected?.id === card.id
-                                            ? "z-40 bg-white rounded-xl h-full w-full"
-                                            : "bg-white rounded-xl h-full w-full"
-                                )}
-                                layout
-                            >
+                        onClick={() => handleClick(card)}
+                        className={cn(
+                            card.title,
+                            "",
+                            selected?.id === card.id
+                                ? ""
+                                : lastSelected?.id === card.id
+                                    ? "z-40 bg-white rounded-xl h-full w-full"
+                                    : "bg-white rounded-xl h-full w-full"
+                        )}
+                        layout
+                    >
                         <Image src={card.cardImage} alt={card.title} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} className="w-full max-w-sm h-auto bg-transparent object-cover cursor-pointer" />
                     </motion.div>
                     <p className="text-center">{positions[index]}</p>

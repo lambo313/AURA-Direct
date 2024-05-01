@@ -9,11 +9,10 @@ import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-  } from "@/components/ui/tooltip"
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
 
 
 interface Props {
@@ -67,48 +66,46 @@ const ReadingMat2: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCl
 
         function CardDetailsTooltip() {
             return (
-            <TooltipProvider>
-                <Tooltip>
-                <TooltipTrigger asChild>
-                    <Button
-                        // variant="outline"
-                        className="shadow-custom-golden text-black"
+                <Popover>
+                    <PopoverTrigger asChild>
+                        <Button
+                            // variant="outline"
+                            className="shadow-custom-golden text-black"
                         // onClick={() => handleCardClick(selected?._id)}
                         >
                             ?
                         </Button>
-                </TooltipTrigger>
-                <TooltipContent className="w-3/4 max-w-[512px] m-auto">
-                    <div className="">
-                        <div className="flex flex-row justify-between cursor-pointer"
-                            onClick={() => handleCardClick(selected?._id)}
-                        >
+                    </PopoverTrigger>
+                    <PopoverContent className="w-3/4 max-w-[512px] m-auto">
+                        <div className="">
+                            <div className="flex flex-row justify-between cursor-pointer"
+                                onClick={() => handleCardClick(selected?._id)}
+                            >
+                                <p
+                                ><strong>
+
+                                        {selected?.title.toLocaleUpperCase()}
+                                    </strong>
+                                </p>
+                                <p>
+                                    <strong>
+                                        {"->"}
+
+                                    </strong>
+                                </p>
+                            </div>
+                            <Separator className="my-1" />
                             <p
-                            ><strong>
-
-                            {selected?.title.toLocaleUpperCase()}
-                            </strong>
+                            ><strong>Upright Effect: </strong>
+                                {selected?.uprightEffect}
                             </p>
-                            <p>
-                                <strong>
-                            {"->"}
-
-                                </strong>
+                            <p
+                            ><strong>Reverse Effect: </strong>
+                                {selected?.reversedEffect}
                             </p>
                         </div>
-                        <Separator className="my-1"/>
-                        <p
-                        ><strong>Upright Effect: </strong>
-                        {selected?.uprightEffect}
-                        </p>
-                        <p
-                        ><strong>Reverse Effect: </strong>
-                        {selected?.reversedEffect}
-                        </p>
-                    </div>
-                </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
+                    </PopoverContent>
+                </Popover>
             )
         }
 
@@ -152,13 +149,13 @@ const ReadingMat2: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCl
                         maxHeight: '480px'
                     }}
                 >
-                
+
                     {/* <p>{selected?.cardDescription}</p> */}
-                   
+
                     <div className="flex justify-center items-end relative top-[102%]">
-                        <CardDetailsTooltip/>
+                        <CardDetailsTooltip />
                     </div>
-                 
+
                 </motion.div>
             </div>
         );
@@ -171,8 +168,8 @@ const ReadingMat2: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCl
                     <React.Fragment key={index}>
                         <div
                             className={`items-center mx-auto max-w-max w-full px-[10%] ${cardPositions[index].row === 1 ? 'top-row' : (cardPositions[index].row === 3 ? 'bottom-row' : '')} ${cardPositions[index].row === 2 && cardPositions[index].col === 2
-                                    ? 'relative' // For the rotated card
-                                    : ''
+                                ? 'relative' // For the rotated card
+                                : ''
                                 }`}
                             style={{
                                 gridColumn: cardPositions[index].col,
@@ -218,9 +215,9 @@ const ReadingMat2: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCl
                                                 : 'auto',
                                         top: 0,
                                         left: 0,
-                                    }}   
+                                    }}
                                     className={cn("w-full max-w-sm h-auto bg-transparent object-cover cursor-pointer",
-                                    loaded ? "blur-none" : "blur-md"
+                                        loaded ? "blur-none" : "blur-md"
                                     )}
                                 />
                             </motion.div>
@@ -241,7 +238,7 @@ const ReadingMat2: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCl
                     </div>
                 </motion.div>
             )}
-            
+
             {lastFourCards.length >= 1 ? (
                 <div className="grid grid-cols-1 justify-center" style={{ flexBasis: '25%' }}>
                     {lastFourCards.slice().reverse().map((card, index) => (
@@ -259,7 +256,7 @@ const ReadingMat2: React.FC<Props> = ({ cards, onCardRemove, positions, onCardCl
                                 )}
                                 layout
                             >
-                            <Image src={card.cardImage} alt={card.title} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} className="w-full max-w-sm h-auto bg-transparent object-cover cursor-pointer" />
+                                <Image src={card.cardImage} alt={card.title} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} className="w-full max-w-sm h-auto bg-transparent object-cover cursor-pointer" />
                             </motion.div>
                             <p className="text-center">{positions[positions.length - index - 1]}</p>
                         </div>

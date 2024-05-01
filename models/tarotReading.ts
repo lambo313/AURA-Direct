@@ -7,7 +7,8 @@ export interface ITarotReadingDocument extends Document {
   response: { role: string; content: any }[];
   spread: string;
   readingDate: Date;
-
+  title: string;
+  notes: string;
 }
 
 const TarotReadingSchema = new Schema<ITarotReadingDocument>({
@@ -27,6 +28,12 @@ const TarotReadingSchema = new Schema<ITarotReadingDocument>({
   },
   readingDate: {
     type: Date
+  },
+  title: {
+    type: String,
+  },
+  notes: {
+    type: String,
   }
 });
 
